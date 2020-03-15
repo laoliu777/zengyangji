@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+	<title>家装</title>
+	<link rel="stylesheet" type="text/css" href="../../css/api.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/common.css" />
+
+	<style>
+		html, body {width: 100%;min-height: 100%;background: #f0f0f0;}
+		.h80 {height: 80px;}
+		.h40 {height: 40px;}
+		.h20 {height: 20px;}
+    	.h10 {height: 10px;/*background: #f0f0f0;*/}
+		.h1 {height: 1px;margin-left: 15px;background: #f0f0f0;}
+		.fr {float: right;}
+		.fl {float: left;}
+		.hightitem {background-color: #fff;}
+
+		.list_shop header {width: 100%; padding-bottom: 20px; background: #fff; }
+		.list_shop header .img_wrap {position: relative; width: 100%; font-size: 0; }
+		.list_shop header .img_wrap img {width: 100%; height: auto; min-height: 135px; max-height: 174px; }
+		.viewed, .viewed-eye {display: inline-block; font-size: 12px; color: #fff; padding: 3px 10px; border-radius: 20px; }
+		.list_shop header .img_wrap .viewed, .list_shop header .img_wrap .viewed-eye {position: absolute; bottom: 7px; left: 7px; }
+		.list_shop header .img_wrap .viewed-eye {display: inline-block; font-size: 12px; color: #fff; background: rgba(0,0,0,.6); padding: 3px 10px; border-radius: 20px; }
+		.viewed .eye, .viewed-eye .eye {display: inline-block; width: 16px; height: 16px; background: url(../../image/funlife/eye.png) no-repeat; background-size: 11px auto; margin-bottom: -3px; }
+		.list_shop header .title {padding: 15px 15px 10px; font-size: 16px; color: #333; }
+		.list_shop header .desc {padding: 0 15px; color: #666; line-height: 21px; white-space: pre-wrap; }
+
+		.list_shop .border {width: 100%; height: 21px; }
+
+		/* 3 section */
+		.list_shop section {margin-bottom: 25px; background: #fff;}
+		.list_shop section .item {position: relative; padding: 15px 15px 45px 0; margin-left: 15px;border-bottom: 1px solid #e0e0e0;}
+		.list_shop section .item .shop_wrap {font-size: 0; display: box; display: -webkit-box; padding-bottom: 10px; }
+		.list_shop section .item .shop_wrap img {width: 110px; height: 83px; margin-right: 11px; border-radius: 4px; -webkit-border-radius: 4px; }
+		.list_shop section .item .shop_wrap .info {font-size: 14px; padding-top: 4px; }
+		.list_shop section .item .shop_wrap .info .name {margin: 5px 0; font-size: 16px; color: #323232; text-overflow: ellipsis; max-width: 160px; height: 24px; line-height: 24px; overflow: hidden; white-space: nowrap; }
+		.star {display: inline-block; width: 66px; height: 12px; vertical-align: middle; background: url(../../image/remark.png) no-repeat; background-size: 86px auto; }
+		.star.star-40 {background-position: 0 -249px; }
+		.list_shop section .item .shop_wrap .info .price {vertical-align: middle; padding-left: 5px; color: #878787; }
+		.list_shop section .item .shop_wrap .info .location {margin-top: 5px; color: #878787; }
+		.list_shop section .item .shop_wrap .info .location .location_icon {display: inline-block; vertical-align: middle; width: 11px; height: 15px; background: url(../../image/location_icon.png) no-repeat; background-size: 11px auto; }
+		.list_shop section .item .shop_wrap .info .location span {vertical-align: middle; padding-left: 10px; }
+
+		.list_shop section .item .desc_wrap {max-height: 42px; overflow: hidden; }
+		.list_shop section .item .desc_wrap .desc {line-height: 21px; color: #666; }
+
+		.list_shop section .item .like {position: absolute; bottom: 15px; color: #666; }
+		.list_shop section .item .like .like_bg {display: inline-block; width: 16px; height: 16px; background: url(../../image/like_bg.png) no-repeat 0 0; background-size: 15px auto; vertical-align: middle; }
+		.list_shop section .item .like .txt, .list_shop section .item .like .num {margin-left: 5px; vertical-align: middle; }
+
+		.arrow {width: 10px; height: 10px; position: absolute; border-right: 2px solid #bab5ad; border-bottom: 2px solid #bab5ad; }
+		.list_shop section .item .arrow {position: absolute; right: 30px; bottom: 23px; -webkit-transform: rotate(45deg); transform: rotate(45deg); }
+
+		.list_shop section .item .desc_wrap.on {max-height: none; }
+	</style>
+</head>
+<body>
+	<div class="list_shop">
+        <header>
+            <div class="img_wrap" id="advert_detail1">
+							<!--
+                <img src="../../image/funlife/funlife01.jpg" alt="">
+                <div class="viewed-eye"><i class="eye"></i></div>
+							-->
+            </div>
+						<div id="advert_detail2">
+							<!--
+            <h3 class="title">美食天堂 最火爆的夜市</h3>
+            <p class="desc">发布时间：1111-11-11 </p>
+					-->
+					</div>
+        </header>
+
+		<div class="border"></div>
+		<section class="J_shop_list">
+			<div class="item">
+				<a class="shop_wrap" href="#"  tapmode="" onclick="">
+				<div class="info" id="advert_detail3">
+					<!--
+          <p>
+				推荐理由：【西安：回民街夜市】西安回民街历史悠久，以浓郁的穆斯林文化和氛围，为古城构筑了一道特异的风景线。肉夹馍、凉皮、烤串、泡馍等特色小吃这里最齐活。
+        推荐理由：【西安：回民街夜市】西安回民街历史悠久，以浓郁的穆斯林文化和氛围，为古城构筑了一道特异的风景线。肉夹馍、凉皮、烤串、泡馍等特色小吃这里最齐活。
+      推荐理由：【西安：回民街夜市】西安回民街历史悠久，以浓郁的穆斯林文化和氛围，为古城构筑了一道特异的风景线。肉夹馍、凉皮、烤串、泡馍等特色小吃这里最齐活。
+    推荐理由：【西安：回民街夜市】西安回民街历史悠久，以浓郁的穆斯林文化和氛围，为古城构筑了一道特异的风景线。肉夹馍、凉皮、烤串、泡馍等特色小吃这里最齐活。
+  推荐理由：【西安：回民街夜市】西安回民街历史悠久，以浓郁的穆斯林文化和氛围，为古城构筑了一道特异的风景线。肉夹馍、凉皮、烤串、泡馍等特色小吃这里最齐活。
+推荐理由：【西安：回民街夜市】西安回民街历史悠久，以浓郁的穆斯林文化和氛围，为古城构筑了一道特异的风景线。肉夹馍、凉皮、烤串、泡馍等特色小吃这里最齐活。
+推荐理由：【西安：回民街夜市】西安回民街历史悠久，以浓郁的穆斯林文化和氛围，为古城构筑了一道特异的风景线。肉夹馍、凉皮、烤串、泡馍等特色小吃这里最齐活。
+</p>
+-->
+				</div>
+				</a>
+        <!--
+				<div class="desc_wrap J_desc"><p class="desc">推荐理由：【西安：回民街夜市】西安回民街历史悠久，以浓郁的穆斯林文化和氛围，为古城构筑了一道特异的风景线。肉夹馍、凉皮、烤串、泡馍等特色小吃这里最齐活。</p></div>
+-->
+			</div>
+
+
+		</section>
+
+	</div>
+</body>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script>
+var advid = "";
+
+apiready=function(){
+  advid = api.pageParam.radvid;
+
+	api.showProgress({
+			style: 'default',
+			animationType: 'fade',
+			title: '努力加载中...',
+			text: '先喝杯茶...',
+			modal: false
+	});
+	api.ajax({
+	    url: 'http://129.204.152.137:8080/project_member/AdvertDetailServlet',
+	    method: 'post',
+	    cache:'false',
+	    timeout:15,
+	    data: {
+	        values: {
+            advid: advid
+          }
+	    }
+		},function(ret, err){
+			api.hideProgress();
+
+	    if (ret[0]) {
+
+	          var advertdetail1=document.getElementById('advert_detail1');
+						var ppadvertdetail1='<img src="'
+                              +ret[0].adpic
+															+'" alt=""><div class="viewed-eye"><i class="eye"></i></div>';
+		        $api.append(advertdetail1,ppadvertdetail1);
+
+            var advertdetail2=document.getElementById('advert_detail2');
+            var ppadvertdetail2='<h3 class="title">'+ret[0].adtitle+'</h3>'
+                              +'<p class="desc">发布时间：'+ret[0].adtime+'</p>';
+            $api.append(advertdetail2,ppadvertdetail2);
+
+            var advertdetail3=document.getElementById('advert_detail3');
+		    		var ppadvertdetail3='<p>'+ret[0].adcontent+'</p>';
+            $api.append(advertdetail3,ppadvertdetail3);
+
+          }
+		 	else {
+				var advertdetail1=document.getElementById('advert_detail1');
+        var ppadvertdetail1='<span class="price">获取新闻信息失败！</span>';
+				$api.append(advertdetail1,ppadvertdetail1);
+
+				var advertdetail2=document.getElementById('advert_detail2');
+        var ppadvertdetail2='<div class="title">获取新闻信息失败！</div>';
+				$api.append(advertdetail2,ppadvertdetail2);
+
+				var advertdetail3=document.getElementById('advert_detail3');
+				var ppadvertdetail3='<p>获取新闻信息失败！</p>';
+				$api.append(advertdetail3,ppadvertdetail3);
+		 	}
+		});
+	}
+
+</script>
+</html>

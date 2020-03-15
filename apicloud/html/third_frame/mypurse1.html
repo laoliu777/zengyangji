@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>首页</title>
+<link rel="stylesheet" type="text/css" href="../../css/api.css" />
+<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+
+<style>
+html, body {width: 100%;min-height: 100%;background: #f0f0f0;}
+.h80 {height: 80px;}
+.h40 {height: 40px;}
+.h20 {height: 20px;}
+  .h10 {height: 10px;background: #f0f0f0;}
+.h1 {height: 1px;margin-left: 15px;background: #f0f0f0;}
+.fr {float: right;}
+.fl {float: left;}
+.hightitem {background-color: #fff;}
+.inwrap {padding-right: 15px;padding-left: 15px;}
+
+input {height: 26px;font-size: 18px;color: #8E8C8C;width: 50%;border:0.5px solid #842B00;}
+input::-webkit-input-placeholder {color: #ccc;}
+
+/* 2. 价格样式 */
+.priceitem {height: 60px; line-height: 60px;border-bottom: 1px solid #ccc;}
+.priceitem .price, .priceitem .symbol {color: #FC5500;}
+.priceitem .price {font-size: 20px;}
+.priceitem .o-price {font-size: 12px; color: #666;}
+.priceitem .buynow {background-color: #FC5500; color: #fff; height: 25px; line-height: 25px; border-radius: 3px;padding: 10px 20px;margin-top: 7px;}
+
+/* 3. */
+.brief .title {height: 50px;line-height: 50px;font-size: 18px;color: #000;}
+.brief .describe {color: #666;font-size: 14px;line-height: 20px;}
+.brief .ico {height: 50px;line-height: 50px;font-size: 14px;color: #7AB388;}
+.brief .ico img {height: 14px;}
+/* 4. */
+.goodcomment {height: 50px;line-height: 50px;font-size: 14px;}
+.goodcomment img {height: 15px;padding-right: 5px;}
+.goodcomment .arrow {float: right;height: 20px;padding-top: 15px;}
+.goodcomment .commentnum {font-size: 15px;color: #666;padding-right: 5px;float: right;}
+
+/* 5. */
+.darktitle {height: 50px;line-height: 50px;font-size: 14px;color: #666;}
+.firstrow {position: relative;}
+.secrow {font-size: 14px;color: #666;border-bottom: 1px solid #e0e0e0;padding-bottom: 15px;}
+.shopinfo .left {height: 60px;padding: 10px 0;}
+.shopinfo .right {position: absolute;top: 0px; right: -15px; padding: 15px;border-left: 1px solid #e0e0e0;}
+.shopinfo .right img {height: 36px;}
+.shopinfo .shopname {font-size: 20px;}
+.moreshop {height: 50px;line-height: 50px;font-size: 14px;}
+
+/* 6. */
+.tuanitem {height: 50px;line-height: 50px;font-size: 14px;border-bottom: 1px solid #e0e0e0;}
+.tuanitem .tuan02,.tuanitem .tuan03,.tuantotalprice .totalprice01, .tuantotalprice .totalprice02, .tuanrealprice .realprice01, .tuanrealprice .realprice02 {float: right; width: 50px;font-size: 14px;}
+.tuantotalprice {margin-top: 10px;}
+.tuantotalprice, .tuanrealprice {height: 30px;}
+.tuanrealprice .realprice02 {font-size: 16px;color: #FC5500;}
+.tuanitem .tuan03, .tuantotalprice .totalprice02, .tuanrealprice .realprice02 {text-align: right;}
+.smallitem .averageprice {float: right;}
+.smallitem {height: 20px;line-height: 20px;font-size: 14px;}
+.recommandtitle {line-height: 25px; font-size: 14px; color: #666;}
+.recommanddish {line-height: 22px; font-size: 14px;}
+.moredetail {height: 50px;line-height: 50px;font-size: 14px;border-top: 1px solid #e0e0e0;}
+.lastitem {padding-bottom: 10px;}
+
+/* 7. */
+.buyinfo .infotitle {line-height: 25px;font-size: 14px;color: #666;}
+.buyinfo li {line-height: 24px;font-size: 13px;color: #000;}
+.buyinfo li img {height: 5px; padding-right: 5px;}
+.arrow {float: right;height: 20px;padding-top: 15px;}
+
+/* 8. */
+.othertuan {height: 50px;line-height: 50px;}
+.othertuan .price, .othertuan .symbol {color: #FC5500;}
+.othertuan .price {font-size: 15px;}
+.othertuan .o-price {font-size: 12px; color: #666;}
+.othertuan .price01 {display: inline-block; width: 30%; vertical-align: top;}
+.othertuan .title {width: 50%; white-space: nowrap; text-overflow: ellipsis; word-wrap: normal; overflow: hidden;}
+.bb {border-bottom: 1px solid #e0e0e0;}
+
+.presshover {background-color: #FAFAFA;}
+.buyhover {background-color: rgba(252, 85, 0, 0.6) !important;}
+.swiper-container img {width: 100%;}
+
+.select {
+    display: inline-block;
+    width: 100px;
+    position: relative;
+    vertical-align: middle;
+    padding: 0;
+    overflow: hidden;
+    background-color: #fff;
+    color: #555;
+    border: 1px solid #aaa;
+    text-shadow: none;
+    border-radius: 4px;
+    transition: box-shadow 0.25s ease;
+    z-index: 2;
+  }
+
+  .select:hover {
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+  }
+
+  .select:before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    border: 10px solid transparent;
+    border-top-color: #ccc;
+    top: 14px;
+    right: 10px;
+    cursor: pointer;
+    z-index: -2;
+  }
+  .select select {
+    cursor: pointer;
+    padding: 10px;
+    width: 100%;
+    border: none;
+    background: transparent;
+    background-image: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+  }
+
+  .select select:focus {
+    outline: none;
+  }
+  .item {display: table; height: 70px; width: 100%;}
+  .item .itemlogo , .item .itemshelf {display: table-cell; vertical-align: middle;float: left;}
+
+  .item .itemlogo {width: 70px;}
+  .item .itemlogo img  {margin-left: 10px;width: 40px;}
+  .item .itemshelf .shelfinfo01 {font-size: 20px;color: #000;}
+
+  .item {background-color: #fff;position: relative;border-bottom: 1px solid #d3d3d3;}
+  .item .itemlogo {position: absolute; top: 10px;}
+  .itemshelf {margin-left: 15px;display: block;/* 不再显示为table-cell */}
+  .item .userlogo img {width: 40px;padding: 2px; border: 1px solid #e7e7e7;border-radius: 2px;}
+  .itemshelf .shelfinfo01 {color: #000;font-size: 16px;line-height: 18px;margin-top: 10px;}
+  .itemshelf .ordering{color: #fff;font-size: 12px;background-color: #5bb06c;padding: 2px 4px;display: inline-block;}
+  .style2 .itemshelf .shelfinfo03 {color: #999;font-size: 12px;margin-right: 10px;border-bottom: 0;padding: 3px 0 5px 0;}
+  .itemshelf .staring {color: #999;font-size: 12px;line-height: 14px;margin-top: 5px;margin-bottom: 20px;}
+  .itemshelf .staring img {height: 12px;}
+
+  .item .buybtn {display: table-cell; vertical-align: middle;}  /*抽象布局信息*/
+  .item .buybtn p {color: #fff;background-color: #3893CF;float: right;padding: 5px 10px;margin-right: 10px;}
+
+</style>
+</head>
+<body>
+<!-- 1. 头部swipe -->
+<div class="h20"></div>
+<div style="text-align:center;">
+<img src="../../image/wallet.png" alt="" width="80px" height="80px">
+</div><br>
+
+<!-- 2. 价格样式 -->
+<div class="priceitem hightitem inwrap" style="display：flex;text-align:center;">
+  <span class="symbol">¥</span>&nbsp;&nbsp;
+      <input type="text" id="mmoney" oninput="value=value.replace(/[^\d]/g,'')"></input>
+</div>
+
+<div class="h20"></div>
+<div class="priceitem hightitem inwrap" style="display：flex;text-align:center;background:rgba(0, 0, 0, 0);">
+<div style="float:center;" class="buynow" tapmode="buyhover" onclick="PurseRecharge()">确认支付</div>
+</div>
+
+
+
+<div class="darktitle inwrap"></div>
+<div class="buyinfo hightitem inwrap">
+<div class="infotitle">【注意事项】</div>
+<p>1.注册时保留的用户姓名必须和到账账户上的预留信息完全一致，否则提现无法到账；</p>
+<p>2.单日提现金额5元起，请尽量在工作日提现。</p>
+<p>3.每个账户提现时需正确填写开户行名称，账号信息。工作日内申请的3个工作日内到账；节假日提现顺延至上班第一天处理。</p>
+<p>4.最终解释权归HNU增氧机租控平台所有。</p>
+
+</div>
+
+<div class="h20"></div>
+
+
+
+</body>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script>
+var mid=localStorage.getItem('log');
+
+apiready=function(){
+
+	}
+
+  function PurseRecharge(){
+    var mmoney=document.getElementById('mmoney').value;
+
+    if(mmoney!=''){
+      api.showProgress({
+          style: 'default',
+          animationType: 'fade',
+          title: '努力加载中...',
+          text: '先喝杯茶...',
+          modal: false
+      });
+      api.ajax({
+          url: 'http://129.204.152.137:8080/project_member/PurseRecharge',
+          method: 'post',
+          cache:'false',
+          timeout:15,
+          dataType:'text',
+          data: {
+              values: {
+                mid:mid,
+                mmoney:mmoney
+              }
+          }
+      },
+      function(ret, err){
+        api.hideProgress();
+          if(ret=='ok'){
+                alert('操作成功');
+                api.execScript({
+                    name: 'mypurse',
+                    frameName: 'mypurse_body',
+                    script: 'showPurse();'
+                });
+                api.closeWin();
+          }else{
+            alert('操作失败' );
+            api.execScript({
+                name: 'mypurse',
+                frameName: 'mypurse_body',
+                script: 'showPurse();'
+            });
+          }
+      });
+    }
+    else{
+      alert('请填写问题反馈！' );
+    }
+  }
+
+</script>
+</html>

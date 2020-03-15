@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+	<title>我的</title>
+	<link rel="stylesheet" type="text/css" href="../../css/api.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/common.css" />
+
+    <style>
+    	html, body {width: 100%;min-height: 100%;background: #f0f0f0;}
+    	.h10 {height: 10px;background: #f0f0f0;}
+		.h1 {height: 1px;margin-left: 15px;background: #f0f0f0;}
+		.fr {float: right;}
+		.hint {color: #666;font-size: 12px;margin-right: 5px;}
+
+		.firstblock, .secondblock, .thirdblock {background-color: #fff;}
+		/* 头部登陆 */
+		.login {background-image: url(../../image/personal_bkg.jpg);background-repeat: no-repeat; background-size: contain;position: relative;}
+		.loginbg {/*position: absolute;*/ width: 100%;}
+		.login .personal_logo {position: absolute; top: 60px; width: 70px; left: 20px;}
+		.person_arrow {position: absolute;height: 20px; right: 10px; top: 90px;}
+		.login .userinfo {position: absolute; top: 60px; margin-left: 100px;}
+		.login .userinfo .title {font-size: 20px; color: #fff;}
+		.login .userinfo .subtitle {font-size: 14px; color: #fff;border: 1px solid #fff;display: inline-block;padding: 3px;border-radius: 4px;margin-top: 5px;}
+
+		/* 设置条目 */
+		.item {height: 50px;line-height: 50px;padding-left: 15px;background-color: #fff;}
+		.item_ico {float: left;width: 30px;padding: 10px 10px 10px 0;}
+		.item_arrow {float: right;width: 16px;padding: 17px 15px 15px 0;}
+
+		.presshover {background-color: #FAFAFA;}
+    </style>
+</head>
+<body>
+	<div class="login">
+		<img src="../../image/personal_bkg1.jpg" alt="" class="loginbg" height="150px">
+		<img src="../../image/profile_default.png" alt="" class="personal_logo">
+		<div class="userinfo" id="mymid">
+			<!--
+			<div class="title" onclick="openLogin()" tapmode="">点击登录</div>
+			<div class="subtitle">会员</div>
+		-->
+		</div>
+		<img src="../../image/personal_icon_arrow.png" alt="" class="person_arrow">
+	</div>
+
+
+	<!-- 第一块 -->
+	<div class="firstblock">
+		<div class="item" tapmode="presshover" onclick="openMessage()">
+			<img src="../../image/my_coupon_user_icon_normal.png" alt="" class="item_ico">
+			<span>我的消息</span>
+			<img src="../../image/arrow.png" alt="" class="item_arrow">
+		</div><div class="h1"></div>
+		<div class="item" tapmode="presshover" onclick="openPurse()">
+			<img src="../../image/my_wallet_user_icon_normal.png" alt="" class="item_ico">
+			<span>我的钱包</span>
+			<img src="../../image/arrow.png" alt="" class="item_arrow">
+			<span class="fr hint">余额/支付宝</span>
+		</div>
+	</div>
+
+
+	<!-- 第二块 -->
+	<div class="h10"></div>
+	<div class="secondblock">
+		<div class="item" tapmode="presshover" onclick="openOrder()">
+			<img src="../../image/my_order_user_icon_normal.png" alt="" class="item_ico">
+			<span>查询订单</span>
+			<img src="../../image/arrow.png" alt="" class="item_arrow">
+		</div><div class="h1"></div>
+		<div class="item" tapmode="presshover" onclick="openItemAdd()">
+			<img src="../../image/my_history_user_icon_normal.png" alt="" class="item_ico">
+			<span>添加设备</span>
+			<img src="../../image/arrow.png" alt="" class="item_arrow">
+		</div><div class="h1"></div>
+		<div class="item" tapmode="presshover" onclick="openAddress()">
+			<img src="../../image/my_review_user_icon_normal.png" alt="" class="item_ico">
+			<span>地址管理</span>
+			<img src="../../image/arrow.png" alt="" class="item_arrow">
+		</div><div class="h1"></div>
+		<div class="item" tapmode="presshover" onclick="openMend()">
+			<img src="../../image/my_order_user_icon_normal.png" alt="" class="item_ico">
+			<span>查询报修记录</span>
+			<img src="../../image/arrow.png" alt="" class="item_arrow">
+		</div>
+	</div>
+
+	<!-- 第三块 -->
+	<div class="h10"></div>
+	<div class="thirdblock">
+		<div class="item" tapmode="presshover" onclick="openSetting()">
+			<img src="../../image/my_setting_user_icon_normal.png" alt="" class="item_ico">
+			<span>设置</span>
+			<img src="../../image/arrow.png" alt="" class="item_arrow">
+		</div><div class="h1"></div>
+		<div class="item" tapmode="presshover" onclick="openLogin()">
+			<img src="../../image/my_card_user_icon_normal.png" alt="" class="item_ico">
+			<span>退出/重新登陆</span>
+			<img src="../../image/arrow.png" alt="" class="item_arrow">
+		</div>
+	</div>
+	<div class="h10"></div>
+	<div class="h10"></div>
+
+</body>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript">
+
+var mid="";
+
+apiready=function(){
+	var mymid=document.getElementById('mymid');
+	var mymid1='<div class="title" ';
+	if(localStorage.getItem('log')){
+		mid=localStorage.getItem('log');
+		mymid1+='>'+mid+'</div><div class="subtitle">会员</div>';
+	}
+	else {
+	  mymid1+='onclick="openLogin()" tapmode="" >用户名/点击登录</div><div class="subtitle">会员</div>';
+	}
+	  $api.append(mymid,mymid1);
+}
+
+function showMid(){
+  location.reload();
+}
+
+
+	function openMessage()
+	{
+		api.openWin({
+			name: 'openmessage',
+			url: '../message.html',
+			bounces: false,
+			delay:200
+		});
+	}
+
+	function openSetting()
+	{
+		api.openWin({
+			name: 'opensetting',
+			url: './setting_header.html',
+			bounces: false,
+			delay:200
+		});
+	}
+
+	function openLogin()
+	{
+		if(localStorage.getItem('log')){
+			localStorage.removeItem('log');
+		}
+		api.openWin({
+			name: 'login',
+			url: './login_header.html',
+			bounces: false,
+			delay:200
+		});
+	}
+
+	function openOrder()
+	{
+		if(localStorage.getItem('log')){
+			api.openWin({
+				name: 'myorder',
+				url: './myorder_header.html',
+				bounces: false,
+				delay:200
+			});
+		}
+		else{
+			alert('请先登录!');
+		}
+	}
+
+	function openMend()
+	{
+		if(localStorage.getItem('log')){
+			api.openWin({
+				name: 'mymend',
+				url: './mymend_header.html',
+				bounces: false,
+				delay:200
+			});
+		}
+		else{
+			alert('请先登录!');
+		}
+	}
+
+		function openPurse()
+		{
+			if(localStorage.getItem('log')){
+				api.openWin({
+					name: 'mypurse',
+					url: './mypurse_header.html',
+					bounces: false,
+					delay:200
+				});
+			}
+			else{
+				alert('请先登录!');
+			}
+		}
+
+		function openItemAdd()
+		{
+			if(localStorage.getItem('log')){
+				api.openWin({
+					name: 'myitemadd',
+					url: './addlist_header.html',
+					bounces: false,
+					delay:200
+				});
+			}
+			else{
+				alert('请先登录!');
+			}
+		}
+
+		function openAddress()
+		{
+			if(localStorage.getItem('log')){
+				api.openWin({
+					name: 'myaddress',
+					url: './address_header.html',
+					bounces: false,
+					delay:200
+				});
+			}
+			else{
+				alert('请先登录!');
+			}
+		}
+
+</script>
+</html>

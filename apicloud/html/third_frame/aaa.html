@@ -1,0 +1,170 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <title>Hello APP</title>
+    <link rel="stylesheet" type="text/css" href="../../css/api.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/common.css" />
+
+    <style>
+        html,body{min-height:100%;background-color: #eee;}
+        body {position: relative;}
+        .h10 {height: 10px;}
+        .h50 {height: 50px;}
+        /* section 1 */
+        .section01 {height: 30px;line-height: 30px;text-align: center;color: #fff;background-color: #5AB06C;}
+        .fr {float: right;}
+        .fl {float: left;}
+
+				input {height: 20px;font-size: 13px;color: #8E8C8C;width: 20%;border:0.5px solid #842B00;}
+				input::-webkit-input-placeholder {color: #ccc;}
+
+        /* 2. 价格样式 */
+        .priceitem {height: 60px; line-height: 60px;border-bottom: 1px solid #ccc;}
+        .priceitem .price, .priceitem .symbol {color: #FC5500;}
+        .priceitem .price {font-size: 20px;}
+        .priceitem .o-price {font-size: 12px; color: #666;}
+        .priceitem .buynow {background-color: #FC5500; color: #fff; height: 25px; line-height: 25px; border-radius: 3px;padding: 10px 20px;margin-top: 7px;}
+
+        /**/
+        .item {display: table; height: 70px; width: 100%;}
+        .item .itemlogo , .item .itemshelf {display: table-cell; vertical-align: middle;float: left;}
+
+        .item .itemlogo {width: 70px;}
+        .item .itemlogo img  {margin-left: 10px;width: 40px;}
+        .item .itemshelf .shelfinfo01 {font-size: 20px;color: #000;}
+
+        .item {background-color: #fff;position: relative;border-bottom: 1px solid #d3d3d3;}
+        .item .itemlogo {position: absolute; top: 10px;}
+        .itemshelf {margin-left: 15px;display: block;/* 不再显示为table-cell */}
+        .item .userlogo img {width: 40px;padding: 2px; border: 1px solid #e7e7e7;border-radius: 2px;}
+        .itemshelf .shelfinfo01 {color: #000;font-size: 16px;line-height: 18px;margin-top: 10px;}
+        .itemshelf .ordering{color: #fff;font-size: 12px;background-color: #5bb06c;padding: 2px 4px;display: inline-block;}
+        .style2 .itemshelf .shelfinfo03 {color: #999;font-size: 12px;margin-right: 10px;border-bottom: 0;padding: 3px 0 5px 0;}
+        .itemshelf .staring {color: #999;font-size: 12px;line-height: 14px;margin-top: 5px;margin-bottom: 20px;}
+        .itemshelf .staring img {height: 12px;}
+
+        .item .buybtn {display: table-cell; vertical-align: middle;}  /*抽象布局信息*/
+        .item .buybtn p {color: #fff;background-color: #3893CF;float: right;padding: 5px 10px;margin-right: 10px;}
+
+        /* */
+        .shopcover {width: 100%;}
+        .section02 .itemshelf .shelfinfo03 {color: #999; font-size: 14px; margin-right: 10px; border-bottom: 0; padding: 5px 0 5px 0;}
+        .section02 .buybtn {display: table-cell; vertical-align: middle;}  /*抽象布局信息*/
+        .section02 .buybtn p {color: #fff;background-color: #5AB06C;float: right;padding: 5px 10px;margin-right: 10px;font-size: 14px;line-height: 20px;}
+        .section02 .buybtn .weixin {height: 20px; vertical-align: top; margin-right: 5px;}
+
+        .minusorder {float: right;display: none;position: relative;}
+        .minus {color: #fff; background-color: #3893CF; float: right; padding: 5px;margin-right: 15px;}
+        .numbg {height: 20px; margin-top: 5px; vertical-align: top;float: right;margin-right: 15px;}
+        .thisordernum {position: absolute; right: 16px; top: 5px; color: #fff; width: 20px; text-align: center; height: 20px;}
+        /* 暗色标题 */
+        .darktitle {height: 30px;line-height: 30px;color: #787878;margin-left: 15px;font-size: 14px;}
+
+        /* 底部信息 */
+        .bottom {height: 50px;background-color: #2f373e;position: fixed;bottom: 0;width: 100%;}
+        .bottom img {height: 30px;margin-top: 10px;margin-left: 15px;vertical-align: top;}
+        #minbuy {float: right;color: #fff;background-color: #404850;padding: 5px 10px;margin: 11px 10px 0 0;}
+        #buyit {float: right;color: #fff;background-color: #4DC060;padding: 5px 10px;margin: 11px 10px 0 0;display: none;}
+        .bottom .buyinfo {height: 50px; line-height: 50px; color: #fff;display: none;}
+        .bottom .buyinfo span {color: #fff;}
+
+        /* 悬浮样式 */
+        .itemhover {background-color: #eee !important;}
+        .total-hover {background-color: rgba(77, 192, 96, 0.6) !important;}
+
+
+    </style>
+</head>
+<body>
+
+  <div class="darktitle">添加设备imei</div>
+	<div class="item style2">
+      <div class="buybtn" style="text-align:center;">
+          <input type="text" maxlength="5" id="imei1"></input>&nbsp;<b>-</b>
+          <input type="text" maxlength="5" id="imei2"></input>&nbsp;<b>-</b>
+          <input type="text" maxlength="5" id="imei3"></input>&nbsp;<b>-</b>
+          <input type="text" maxlength="5" id="imei4"></input>
+      </div>
+  </div>
+
+
+  <div class="priceitem hightitem inwrap" style="display：flex;">
+  <div class="buynow fr" tapmode="buyhover" onclick="ItemAddSub()">提交</div>
+  </div>
+
+
+    <div class="h50"></div>
+
+</body>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript">
+var oid="";
+
+apiready=function(){
+	//oid = api.pageParam.roid;
+	oid=10;
+}
+
+
+function ItemAddSub(){
+  var aimei1=document.getElementById('imei1').value;
+  var aimei2=document.getElementById('imei2').value;
+  var aimei3=document.getElementById('imei3').value;
+  var aimei4=document.getElementById('imei4').value;
+
+  if((aimei1!='')&&(aimei2!='')&&(aimei3!='')&&(aimei4!='')
+      &&(aimei1.length==5)&&(aimei2.length==5)&&(aimei3.length==5)&&(aimei4.length==5)){
+    api.showProgress({
+        style: 'default',
+        animationType: 'fade',
+        title: '努力加载中...',
+        text: '先喝杯茶...',
+        modal: false
+    });
+    api.ajax({
+        url: 'http://129.204.152.137:8080/project_member/AddItemServlet',
+        method: 'post',
+        cache:'false',
+        timeout:15,
+        dataType:'text',
+        data: {
+            values: {
+							toid:oid,
+              imei1:aimei1,
+              imei2:aimei2,
+              imei3:aimei3,
+              imei4:aimei4
+            }
+        }
+    },
+    function(ret, err){
+      api.hideProgress();
+        if(ret=='ok'){
+              alert('操作成功');
+              api.execScript({
+                  name: 'root',
+                  frameName: 'first_frame',
+                  script: 'showItemList();'
+              });
+              //api.closeWin();
+              api.closeToWin({
+                name: 'root'
+              });
+        }else{
+          alert('操作失败' );
+          api.execScript({
+              name: 'root',
+              frameName: 'first_frame',
+              script: 'showItemList();'
+          });
+        }
+    });
+  }else{
+		alert('输入设备imei有误！' );
+  }
+
+}
+</script>
+</html>

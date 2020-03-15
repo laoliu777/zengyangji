@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>首页</title>
+<link rel="stylesheet" type="text/css" href="../../css/api.css" />
+<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+
+<style>
+html, body {width: 100%;min-height: 100%;background: #f0f0f0;}
+.h80 {height: 80px;}
+.h40 {height: 40px;}
+.h20 {height: 20px;}
+  .h10 {height: 10px;background: #f0f0f0;}
+.h1 {height: 1px;margin-left: 15px;background: #f0f0f0;}
+.fr {float: right;}
+.fl {float: left;}
+.hightitem {background-color: #fff;}
+.inwrap {padding-right: 15px;padding-left: 15px;}
+
+input {height: 26px;font-size: 18px;color: #8E8C8C;width: 50%;border:0.5px solid #842B00;}
+input::-webkit-input-placeholder {color: #ccc;}
+
+/* 2. 价格样式 */
+.priceitem {height: 60px; line-height: 60px;border-bottom: 1px solid #ccc;}
+.priceitem .price, .priceitem .symbol {color: #FC5500;}
+.priceitem .price {font-size: 20px;}
+.priceitem .o-price {font-size: 12px; color: #666;}
+.priceitem .buynow {background-color: #FC5500; color: #fff; height: 25px; line-height: 25px; border-radius: 3px;padding: 10px 20px;margin-top: 7px;}
+
+/* 3. */
+.brief .title {height: 50px;line-height: 50px;font-size: 18px;color: #000;}
+.brief .describe {color: #666;font-size: 14px;line-height: 20px;}
+.brief .ico {height: 50px;line-height: 50px;font-size: 14px;color: #7AB388;}
+.brief .ico img {height: 14px;}
+/* 4. */
+.goodcomment {height: 50px;line-height: 50px;font-size: 14px;}
+.goodcomment img {height: 15px;padding-right: 5px;}
+.goodcomment .arrow {float: right;height: 20px;padding-top: 15px;}
+.goodcomment .commentnum {font-size: 15px;color: #666;padding-right: 5px;float: right;}
+
+/* 5. */
+.darktitle {height: 50px;line-height: 50px;font-size: 14px;color: #666;}
+.firstrow {position: relative;}
+.secrow {font-size: 14px;color: #666;border-bottom: 1px solid #e0e0e0;padding-bottom: 15px;}
+.shopinfo .left {height: 60px;padding: 10px 0;}
+.shopinfo .right {position: absolute;top: 0px; right: -15px; padding: 15px;border-left: 1px solid #e0e0e0;}
+.shopinfo .right img {height: 36px;}
+.shopinfo .shopname {font-size: 20px;}
+.moreshop {height: 50px;line-height: 50px;font-size: 14px;}
+
+/* 6. */
+.tuanitem {height: 50px;line-height: 50px;font-size: 14px;border-bottom: 1px solid #e0e0e0;}
+.tuanitem .tuan02,.tuanitem .tuan03,.tuantotalprice .totalprice01, .tuantotalprice .totalprice02, .tuanrealprice .realprice01, .tuanrealprice .realprice02 {float: right; width: 50px;font-size: 14px;}
+.tuantotalprice {margin-top: 10px;}
+.tuantotalprice, .tuanrealprice {height: 30px;}
+.tuanrealprice .realprice02 {font-size: 16px;color: #FC5500;}
+.tuanitem .tuan03, .tuantotalprice .totalprice02, .tuanrealprice .realprice02 {text-align: right;}
+.smallitem .averageprice {float: right;}
+.smallitem {height: 20px;line-height: 20px;font-size: 14px;}
+.recommandtitle {line-height: 25px; font-size: 14px; color: #666;}
+.recommanddish {line-height: 22px; font-size: 14px;}
+.moredetail {height: 50px;line-height: 50px;font-size: 14px;border-top: 1px solid #e0e0e0;}
+.lastitem {padding-bottom: 10px;}
+
+/* 7. */
+.buyinfo .infotitle {line-height: 25px;font-size: 14px;color: #666;}
+.buyinfo li {line-height: 24px;font-size: 13px;color: #000;}
+.buyinfo li img {height: 5px; padding-right: 5px;}
+.arrow {float: right;height: 20px;padding-top: 15px;}
+
+/* 8. */
+.othertuan {height: 50px;line-height: 50px;}
+.othertuan .price, .othertuan .symbol {color: #FC5500;}
+.othertuan .price {font-size: 15px;}
+.othertuan .o-price {font-size: 12px; color: #666;}
+.othertuan .price01 {display: inline-block; width: 30%; vertical-align: top;}
+.othertuan .title {width: 50%; white-space: nowrap; text-overflow: ellipsis; word-wrap: normal; overflow: hidden;}
+.bb {border-bottom: 1px solid #e0e0e0;}
+
+.presshover {background-color: #FAFAFA;}
+.buyhover {background-color: rgba(252, 85, 0, 0.6) !important;}
+.swiper-container img {width: 100%;}
+
+
+
+  .item {display: table; height: 70px; width: 100%;}
+  .item .itemlogo , .item .itemshelf {display: table-cell; vertical-align: middle;float: left;}
+
+  .item .itemlogo {width: 70px;}
+  .item .itemlogo img  {margin-left: 10px;width: 40px;}
+  .item .itemshelf .shelfinfo01 {font-size: 18px;color: #000;}
+  .item .itemshelf .shelfinfo02 {font-size: 13px;color: #000;}
+
+  .item {background-color: #fff;position: relative;border-bottom: 1px solid #d3d3d3;}
+  .item .itemlogo {position: absolute; top: 10px;}
+  .itemshelf {margin-left: 15px;display: block;/* 不再显示为table-cell */}
+  .item .userlogo img {width: 40px;padding: 2px; border: 1px solid #e7e7e7;border-radius: 2px;}
+  .itemshelf .shelfinfo01 {color: #000;font-size: 16px;line-height: 18px;margin-top: 10px;}
+  .itemshelf .ordering{color: #fff;font-size: 12px;background-color: #5bb06c;padding: 2px 4px;display: inline-block;}
+  .style2 .itemshelf .shelfinfo03 {color: #999;font-size: 12px;margin-right: 10px;border-bottom: 0;padding: 3px 0 5px 0;}
+  .itemshelf .staring {color: #999;font-size: 12px;line-height: 14px;margin-top: 5px;margin-bottom: 20px;}
+  .itemshelf .staring img {height: 12px;}
+
+  .item .buybtn {display: table-cell; vertical-align: middle;}  /*抽象布局信息*/
+  .item .buybtn p {color: #fff;background-color: #F75000;float: right;padding: 5px 10px;margin-right: 10px;}
+
+  /* */
+  .shopcover {width: 100%;}
+  .section02 .itemshelf .shelfinfo03 {color: #999; font-size: 14px; margin-right: 10px; border-bottom: 0; padding: 5px 0 5px 0;}
+  .section02 .buybtn {display: table-cell; vertical-align: middle;}  /*抽象布局信息*/
+  .section02 .buybtn p {color: #fff;background-color: #5AB06C;float: right;padding: 5px 10px;margin-right: 10px;font-size: 14px;line-height: 20px;}
+  .section02 .buybtn .weixin {height: 20px; vertical-align: top; margin-right: 5px;}
+
+  .minusorder {float: right;display: none;position: relative;}
+  .minus {color: #fff; background-color: #F75000; float: right; padding: 5px;margin-right: 15px;}
+  .numbg {height: 20px; margin-top: 5px; vertical-align: top;float: right;margin-right: 15px;}
+  .thisordernum {position: absolute; right: 16px; top: 5px; color: #fff; width: 20px; text-align: center; height: 20px;}
+  /* 暗色标题 */
+  .darktitle {height: 30px;line-height: 30px;color: #787878;margin-left: 15px;font-size: 14px;}
+
+  /* 底部信息 */
+  .bottom {height: 50px;background-color: #000000;position: fixed;bottom: 0;width: 100%;}
+  .bottom img {height: 30px;margin-top: 10px;margin-left: 15px;vertical-align: top;}
+  #minbuy {float: right;color: #fff;background-color: #BB3D00;padding: 5px 10px;margin: 11px 10px 0 0;}
+  #buyit {float: right;color: #fff;background-color: #F75000;padding: 5px 10px;margin: 11px 10px 0 0;display: none;}
+  .bottom .buyinfo {height: 50px; line-height: 50px; color: #fff;display: none;}
+  .bottom .buyinfo span {color: #fff;}
+
+  /* 悬浮样式 */
+  .itemhover {background-color: #eee !important;}
+  .total-hover {background-color: rgba(247, 80, 0, 0.6) !important;}
+
+
+</style>
+</head>
+<body>
+<!-- 1. 头部swipe -->
+<div class="h20"></div>
+  <div class="darktitle inwrap"></div>
+  <div class="buyinfo hightitem inwrap" id="renewitem">
+    <!--
+  <br>
+  <div class="infotitle">【设备信息】</div>
+  <p>设备号：AAAAA</p>
+  <p>租金：AAAAA</p>
+  <br>
+-->
+  </div>
+
+<br>
+<!-- 2. 价格样式 -->
+  <div class="item style2">
+      <div class="itemshelf">
+          <br>
+          <div class="shelfinfo01">续租时长</div>
+          <div class="shelfinfo02">按月计算，每月按30天记</div>
+          <div class="shelfinfo02">从结束日期开始</div>
+          <br>
+      </div>
+      <div class="buybtn"><p tapmode="" onclick="buyfood(0)">+</p>
+          <span class="minusorder">
+              <img src="../../image/foodlist_bg_foodnum.png" alt="" class="numbg"><span class="thisordernum">0</span>
+              <span class="minus" tapmode="" onclick="minuscash(0)">－</span>
+          </span>
+      </div>
+  </div>
+
+<div class="h50"></div>
+<div class="bottom">
+    <img src="../../image/cart.png" alt=""><!---->
+    <span class="buyinfo" id="buyinfo">￥<span id="totalcash">10</span>(押金已付)</span>
+    <span id="minbuy">￥0元</span>
+    <span id="buyit" tapmode="total-hover" onclick="ItemReNew()">确认订单</span>
+</div>
+
+
+
+</body>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script>
+var mid=localStorage.getItem('log');
+var totalcash = 0;
+var buynum = 0;
+var danjia=1;//就是租金
+var month=0;
+var ino="";
+
+apiready=function(){
+  danjia =parseFloat(api.pageParam.ttzujing);
+  ino = api.pageParam.ttino;
+
+  var renewitem=document.getElementById('renewitem');
+  var pprenewitem='<br><div>【设备信息】</div><p>设备号：'+ino
+                  +'</p><p>租金：¥'+danjia
+                  +'</p><br>';
+  $api.append(renewitem,pprenewitem);
+
+	}
+
+  function buyfood (index) {
+      var buyinfodom = document.getElementById('buyinfo');
+      var buynumdom = document.getElementById('buynum');
+      var totalcashdom = document.getElementById('totalcash');
+      var minbuydom = document.getElementById('minbuy');
+      var buyitdom = document.getElementById('buyit');
+      var minusorderdom = document.getElementsByClassName('minusorder');
+      var thisordernumdom = document.getElementsByClassName('thisordernum');
+
+      var num = parseInt(thisordernumdom[index].innerHTML);
+      num += 1;
+
+      if (num >= 1) {
+          thisordernumdom[index].innerHTML = num;
+      }
+
+
+      minusorderdom[index].style.display = 'inline-block';
+
+      switch(index){
+          case 0:
+              month++;
+              totalcash = 30*danjia*month;
+              break;
+          default:
+              break;
+      }
+
+      if ( totalcash == 0) {
+          buyinfodom.style.display = 'none';
+      }
+      else {
+          buyitdom.style.display = 'inline-block';
+          minbuydom.style.display = 'none';
+          buyinfodom.style.display = 'inline-block';
+          totalcashdom.innerHTML = totalcash;
+
+      }
+  }
+
+  function minuscash (index) {
+      var buyinfodom = document.getElementById('buyinfo');
+      var buynumdom = document.getElementById('buynum');
+      var totalcashdom = document.getElementById('totalcash');
+      var minbuydom = document.getElementById('minbuy');
+      var buyitdom = document.getElementById('buyit');
+      var minusorderdom = document.getElementsByClassName('minusorder');
+      var thisordernumdom = document.getElementsByClassName('thisordernum');
+
+      var num = thisordernumdom[index].innerHTML;
+      num -= 1;
+
+      if (num >= 1) {
+          thisordernumdom[index].innerHTML = num;
+      }
+      else{
+          thisordernumdom[index].innerHTML = num;
+          minusorderdom[index].style.display = 'none';
+      }
+
+      switch(index){
+        case 0:
+            month--;
+            totalcash = 30*danjia*month;
+            break;
+        default:
+            break;
+      }
+
+      if ( totalcash == 0) {
+          buyinfodom.style.display = 'none';
+          minbuydom .style.display = 'inline-block';
+          buyitdom.style.display = 'none';
+      }
+      else {
+          // buyitdom.style.display = 'inline-block';
+          // minbuydom.style.display = 'none';
+          buyinfodom.style.display = 'inline-block';
+          totalcashdom.innerHTML = totalcash;
+      }
+  }
+
+
+  function ItemReNew(){
+    if(month>0){
+      api.showProgress({
+          style: 'default',
+          animationType: 'fade',
+          title: '努力加载中...',
+          text: '先喝杯茶...',
+          modal: false
+      });
+      api.ajax({
+          url: 'http://129.204.152.137:8080/project_member/ItemRenewServlet',
+          method: 'post',
+          cache:'false',
+          timeout:15,
+          dataType:'text',
+          data: {
+              values: {
+                mid:mid,
+                monthrent:month,
+                zujing:danjia,
+                ino:ino
+              }
+          }
+      },
+      function(ret, err){
+        api.hideProgress();
+          if(ret=='ok'){
+                alert('操作成功');
+                api.execScript({
+                    name: 'root',
+                    frameName: 'first_frame',
+                    script: 'showItemList();'
+                });
+                //api.closeWin();
+                api.closeToWin({
+                  name: 'root'
+                });
+          }else{
+            alert('余额不足！' );
+            api.execScript({
+                name: 'root',
+                frameName: 'first_frame',
+                script: 'showItemList();'
+            });
+          }
+      });
+    }
+    else{
+      alert('请输入租赁时长！' );
+    }
+  }
+
+
+
+</script>
+</html>

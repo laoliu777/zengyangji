@@ -1,0 +1,838 @@
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+  <meta charset="UTF-8">
+  <title>首页</title>
+  <link rel="stylesheet" type="text/css" href="../../css/api.css" />
+  <link rel="stylesheet" type="text/css" href="../../css/common.css" />
+
+  <style>
+  html, body {width: 100%;min-height: 100%;background: #f0f0f0;}
+  .h80 {height: 80px;}
+  .h70 {height: 70px;}
+  .h60 {height: 60px;}
+  .h40 {height: 40px;}
+  .h20 {height: 20px;}
+    .h10 {height: 10px;background: #f0f0f0;}
+    .h11 {height: 10px;}
+  .h1 {height: 1px;margin-left: 15px;background: #f0f0f0;}
+  .fr {float: right;}
+  .fl {float: left;}
+  .hightitem {background-color: #fff;}
+  .inwrap {padding-right: 15px;padding-left: 15px;}
+
+  /* 2. 价格样式 */
+  .priceitem {height: 60px; line-height: 60px;border-bottom: 1px solid #ccc;}
+  .priceitem .price, .priceitem .symbol {color: #FC5500;}
+  .priceitem .price {font-size: 20px;}
+  .priceitem .o-price {font-size: 12px; color: #666;}
+  .priceitem .buynow {background-color: #FC5500; color: #fff; height: 25px; line-height: 25px; border-radius: 3px;padding: 10px 20px;margin-top: 7px;}
+
+  /* 3. */
+  .brief .title {height: 50px;line-height: 50px;font-size: 18px;color: #000;}
+  .brief .describe {color: #666;font-size: 14px;line-height: 20px;}
+  .brief .ico {height: 50px;line-height: 50px;font-size: 14px;color: #7AB388;}
+  .brief .ico img {height: 14px;}
+  /* 4. */
+  .goodcomment {height: 50px;line-height: 50px;font-size: 14px;}
+  .goodcomment img {height: 15px;padding-right: 5px;}
+  .goodcomment .arrow {float: right;height: 20px;padding-top: 15px;}
+  .goodcomment .commentnum {font-size: 15px;color: #666;padding-right: 5px;float: right;}
+
+  /* 5. */
+  .darktitle {height: 50px;line-height: 50px;font-size: 14px;color: #666;}
+  .firstrow {position: relative;}
+  .secrow {font-size: 14px;color: #666;border-bottom: 1px solid #e0e0e0;padding-bottom: 15px;}
+  .shopinfo .left {height: 60px;padding: 10px 0;}
+  .shopinfo .right {position: absolute;top: 0px; right: -15px; padding: 15px;border-left: 1px solid #e0e0e0;}
+  .shopinfo .right img {height: 36px;}
+  .shopinfo .shopname {font-size: 20px;}
+  .moreshop {height: 50px;line-height: 50px;font-size: 14px;}
+
+  /* 6. */
+  .tuanitem {height: 50px;line-height: 50px;font-size: 14px;border-bottom: 1px solid #e0e0e0;}
+  .tuanitem .tuan02,.tuanitem .tuan03,.tuantotalprice .totalprice01, .tuantotalprice .totalprice02, .tuanrealprice .realprice01, .tuanrealprice .realprice02 {float: right; width: 50px;font-size: 14px;}
+  .tuantotalprice {margin-top: 10px;}
+  .tuantotalprice, .tuanrealprice {height: 30px;}
+  .tuanrealprice .realprice02 {font-size: 16px;color: #FC5500;}
+  .tuanitem .tuan03, .tuantotalprice .totalprice02, .tuanrealprice .realprice02 {text-align: right;}
+  .smallitem .averageprice {float: right;}
+  .smallitem {height: 20px;line-height: 20px;font-size: 14px;}
+  .recommandtitle {line-height: 25px; font-size: 14px; color: #666;}
+  .recommanddish {line-height: 22px; font-size: 14px;}
+  .moredetail {height: 50px;line-height: 50px;font-size: 14px;border-top: 1px solid #e0e0e0;}
+  .lastitem {padding-bottom: 10px;}
+
+  /* 7. */
+  .buyinfo .infotitle {line-height: 25px;font-size: 14px;color: #666;}
+  .buyinfo li {line-height: 24px;font-size: 13px;color: #000;}
+  .buyinfo li img {height: 5px; padding-right: 5px;}
+  .arrow {float: right;height: 20px;padding-top: 15px;}
+
+  /* 8. */
+  .othertuan {height: 50px;line-height: 50px;}
+  .othertuan .price, .othertuan .symbol {color: #FC5500;}
+  .othertuan .price {font-size: 15px;}
+  .othertuan .o-price {font-size: 12px; color: #666;}
+  .othertuan .price01 {display: inline-block; width: 30%; vertical-align: top;}
+  .othertuan .title {width: 50%; white-space: nowrap; text-overflow: ellipsis; word-wrap: normal; overflow: hidden;}
+  .bb {border-bottom: 1px solid #e0e0e0;}
+
+  .presshover {background-color: #FAFAFA;}
+  .buyhover {background-color: rgba(252, 85, 0, 0.6) !important;}
+  .swiper-container img {width: 100%;}
+
+  .select {
+      display: inline-block;
+      width: 100px;
+      position: relative;
+      vertical-align: middle;
+      padding: 0;
+      overflow: hidden;
+      background-color: #fff;
+      color: #555;
+      border: 1px solid #aaa;
+      text-shadow: none;
+      border-radius: 4px;
+      transition: box-shadow 0.25s ease;
+      z-index: 2;
+    }
+
+    .select:hover {
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+    }
+
+    .select:before {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 0;
+      border: 10px solid transparent;
+      border-top-color: #ccc;
+      top: 14px;
+      right: 10px;
+      cursor: pointer;
+      z-index: -2;
+    }
+    .select select {
+      cursor: pointer;
+      padding: 10px;
+      width: 100%;
+      border: none;
+      background: transparent;
+      background-image: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+    }
+
+    .select select:focus {
+      outline: none;
+    }
+    .item {display: table; height: 70px; width: 100%;}
+    .item .itemlogo , .item .itemshelf {display: table-cell; vertical-align: middle;float: left;}
+
+    .item .itemlogo {width: 70px;}
+    .item .itemlogo img  {margin-left: 10px;width: 40px;}
+    .item .itemshelf .shelfinfo01 {font-size: 20px;color: #000;}
+
+    .item {background-color: #fff;position: relative;border-bottom: 1px solid #d3d3d3;}
+    .item .itemlogo {position: absolute; top: 10px;}
+    .itemshelf {margin-left: 15px;display: block;/* 不再显示为table-cell */}
+    .item .userlogo img {width: 40px;padding: 2px; border: 1px solid #e7e7e7;border-radius: 2px;}
+    .itemshelf .shelfinfo01 {color: #000;font-size: 16px;line-height: 18px;margin-top: 10px;}
+    .itemshelf .ordering{color: #fff;font-size: 12px;background-color: #5bb06c;padding: 2px 4px;display: inline-block;}
+    .style2 .itemshelf .shelfinfo03 {color: #999;font-size: 12px;margin-right: 10px;border-bottom: 0;padding: 3px 0 5px 0;}
+    .itemshelf .staring {color: #999;font-size: 12px;line-height: 14px;margin-top: 5px;margin-bottom: 20px;}
+    .itemshelf .staring img {height: 12px;}
+
+    .item .buybtn {display: table-cell; vertical-align: middle;}  /*抽象布局信息*/
+    .item .buybtn p {color: #fff;background-color: #3893CF;float: right;padding: 5px 10px;margin-right: 10px;}
+
+    .back {float: left; padding-right: 30px;}
+    .back img {height: 30px;margin-top: 10px;margin-left: 10px;margin-bottom: 10px;}
+
+  </style>
+  </head>
+  <body>
+
+<!--刷新的！-->
+<div style="background: #ffffff;">
+<div class="h11"></div>
+<div>
+  <div class="back"  tapmode="" onclick="goback()"><img src="../../image/ic_back_u.png" alt=""></div>
+  <table align="right">
+    <tr align="center">
+          <td>
+            <img src="../../image/clock.png" alt="" width="42px" height="42px" onclick="SetClock()">
+          </td>
+          <td></td>
+          <td>
+            <img src="../../image/refresh.png" alt="" width="40px" height="40px" onclick="itemrefresh()">
+          </td>
+          <td></td>
+      </tr>
+      <tr align="center" style="font-size:13px;">
+          <td>定时</td>
+          <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td>刷新</td>
+          <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+      </tr>
+  </table>
+  <!--
+  <span style="text-align:right;float:right;" onclick="itemrefresh()" >
+  <img src="../../image/refresh.png" alt="" width="40px" height="40px">&nbsp;&nbsp;&nbsp;
+</span>
+-->
+</div>
+<div class="h70"></div>
+<div class="h1"></div>
+<div class="h11"></div>
+  <div style="text-align:center;" id="item_detail2">
+    <!--
+  <img src="../../image/switch_off.png" alt="" width="120px" height="120px">
+-->
+  </div>
+
+  <div class="priceitem hightitem inwrap" style="display：flex;text-align:center;" id="item_detail3">
+<!--
+    <span class="symbol">关机中</span>
+  -->
+  </div>
+</div>
+
+<div class="h20"></div>
+
+  <!--
+  <div class="priceitem hightitem inwrap" style="display：flex;text-align:center;background:rgba(0, 0, 0, 0);" id="item_detail4">
+
+  <div style="float:center;" class="buynow" tapmode="buyhover" onclick="">开启设备</div>
+
+  </div>
+-->
+
+  <div class="brief inwrap hightitem" id="item_detail1">
+    <!--
+  <div class="title">MXXXE-SFWAE-ERERE-ISJWQ</div>
+  <div class="describe">型号ASDL-001</div>
+  <div class="ico"><img src="../../image/icon_pay_success.png" alt=""> 设备正常</div>
+  -->
+  </div>
+  <!-- 参数查询-->
+  <!--
+  <div class="darktitle inwrap">实时参数查询</div>
+-->
+
+<div class="h20"></div>
+
+<div class="buyinfo hightitem inwrap">
+  <table align="center" style="font-size:18px;text-align: center;">
+    <tr  align="center" style="height:50px;border: 1px solid #f0f0f0;">
+          <td style="width:80px;">
+            温度(℃)
+          </td>
+          <td colspan="2" style="width:250px;" id="mytemp">
+            <!--31-->
+          </td>
+      </tr>
+      <tr  align="center" style="height:50px;border: 1px solid #f0f0f0;">
+        <td style="width:80px;">
+          定位
+        </td>
+        <td style="width:250px;" colspan="2" id="myaddress">
+          <!--长沙市岳麓区湖南大学-->
+        </td>
+      </tr>
+      <tr  align="center" style="height:50px;border: 1px solid #f0f0f0;">
+        <td style="width:80px;">
+          定时
+        </td>
+        <td style="width:150px;" id="myclock1">
+          <!--关闭-->
+        </td>
+        <td style="width:100px;" id="myclock2">
+          <!--
+          <img src="../../image/item_open.png" alt="" width="15px" height="15px" onclick="itemrefresh()">
+        -->
+        </td>
+      </tr>
+  </table>
+</div>
+
+
+  <!--
+  <div class="buyinfo hightitem inwrap" id="item_detail5">
+
+  <div class="infotitle">温度（℃）</div>
+  <ul>
+    <li><img src="../../image/home_serve_dot.png" alt="">20</li>
+  </ul>
+  <div class="infotitle">定位</div>
+  <ul>
+    <li><img src="../../image/home_serve_dot.png" alt="">湖南省长沙市岳麓区湖南大学</li>
+  </ul>
+  <div class="infotitle">定时</div>
+  <ul>
+    <li><img src="../../image/home_serve_dot.png" alt="">10:00-11:00</li>
+  </ul>
+
+  </div>
+-->
+
+<!--
+  <div class="h20"></div>
+  <div class="darktitle inwrap">定时设置</div>
+  <div class="priceitem hightitem inwrap" style="display：flex;">
+  <div class="buynow fl" tapmode="buyhover" onclick="openClock()">开启定时</div>
+  <div class="buynow fr" tapmode="buyhover" onclick="deleteClock()">删除定时</div>
+  </div>
+-->
+
+  <div class="h10"></div>
+  <div class="priceitem hightitem inwrap" style="display：flex;text-align:center;background:rgba(0, 0, 0, 0);" >
+  <div style="float:center;" class="buynow" tapmode="buyhover" onclick="openItemMend()">设备报修</div>
+  </div>
+
+
+    <div class="buyinfo hightitem inwrap" id="item_detail111">
+  </div>
+
+
+  </body>
+  <script type="text/javascript" src="../../script/api.js"></script>
+  <script>
+
+var ino = "";
+var sswitch=1;
+var clock=1;
+
+apiready=function(){
+  ino = api.pageParam.ttino;
+
+  api.showProgress({
+      style: 'default',
+      animationType: 'fade',
+      title: '努力加载中...',
+      text: '先喝杯茶...',
+      modal: false
+  });
+	api.ajax({
+	    url: 'http://129.204.152.137:8080/project_member/ItemDetailServlet',
+	    method: 'post',
+	    cache:'false',
+	    timeout:15,
+	    data: {
+	        values: {
+            //type: type,
+            ino: ino
+          }
+	    }
+		},function(ret, err){
+      api.hideProgress();
+	    if (ret[0]) {
+            sswitch=parseInt(ret[0].sswitch);
+            clock=parseInt(ret[0].clock);
+
+            var itemdetail1=document.getElementById('item_detail1');
+            var ppitemdetail1='<div class="title">'+ret[0].ino+'</div>'
+                              +'<div class="describe">型号：'+ret[0].type+'</div>';
+                              //+'<div class="ico"><img src="../../image/icon_pay_success.png" alt=""> 设备正常</div>';
+            $api.append(itemdetail1,ppitemdetail1);
+
+            var itemdetail2=document.getElementById('item_detail2');
+            var itemdetail3=document.getElementById('item_detail3');
+            //var itemdetail4=document.getElementById('item_detail4');
+            if (sswitch==1){
+                  var runtime=parseInt(ret[0].runtime);
+                  var runhour=parseInt(runtime/60);
+                  var runmin=runtime%60;
+                  var ppitemdetail2='<img src="../../image/switch_on.png" alt="" width="160px" height="160px" tapmode="buyhover" '
+                                   +' onclick="ItemSwitch()" >';
+                  var ppitemdetail3='<span class="symbol"><font color="#026116">开机中，已运行'
+                                    +runhour+'小时'+runmin+'分钟</font></span>';
+                  //var ppitemdetail4='<div style="float:center;background:#C30202;" class="buynow" tapmode="buyhover" '
+                  //                  +' onclick="ItemSwitch()" >关闭设备</div>';
+            }else{
+                  var ppitemdetail2='<img src="../../image/switch_off.png" alt="" width="160px" height="160px" tapmode="buyhover" '
+                                   +' onclick="ItemSwitch()" >';
+                  var ppitemdetail3='<span class="symbol"><font color="#C30202">关机中</font></span>';
+                  //var ppitemdetail4='<div style="float:center;background:#026116;" class="buynow" tapmode="buyhover" '
+                  //                  +' onclick="ItemSwitch()" >开启设备</div>';
+            }
+            $api.append(itemdetail2,ppitemdetail2);
+            $api.append(itemdetail3,ppitemdetail3);
+            //$api.append(itemdetail4,ppitemdetail4);
+
+            var myclock1=document.getElementById('myclock1');
+            var myclock2=document.getElementById('myclock2');
+            var ppmyclock1='';
+            var ppmyclock2='';
+            if(clock==1){
+              ppmyclock1+=ret[0].ontime+' - '+ret[0].offtime+'</li></ul>';
+              ppmyclock2+='<img src="../../image/switch_1.png" alt="" height="60px" onclick="SetClock()">';
+            }else{
+              ppmyclock1+='无';
+              ppmyclock2+='<img src="../../image/switch_0.png" alt="" height="60px" onclick="SetClock()">';
+            }
+            $api.append(myclock1,ppmyclock1);
+            $api.append(myclock2,ppmyclock2);
+
+            /*
+            var itemdetail5=document.getElementById('item_detail5');
+		    		var ppitemdetail5='<div class="infotitle">温度（℃）</div><ul><li><img src="../../image/home_serve_dot.png" alt="">20'
+                            +'</li></ul><div class="infotitle">定位</div><ul><li><img src="../../image/home_serve_dot.png" alt="">'
+                            +'湖南省长沙市岳麓区湖南大学'
+                            +'</li></ul><div class="infotitle">定时</div><ul><li  class="lastitem"><img src="../../image/home_serve_dot.png" alt="">';
+            if(clock==1){
+              ppitemdetail5+=ret[0].ontime+' - '+ret[0].offtime+'</li></ul>';
+            }else{
+              ppitemdetail5+='无</li></ul>';
+            }
+            $api.append(itemdetail5,ppitemdetail5);
+            */
+          }
+		 	else {
+        var itemdetail1=document.getElementById('item_detail1');
+        var ppitemdetail1='<span class="price">获取增氧机信息失败！</span>';
+        $api.append(itemdetail1,ppitemdetail1);
+
+        var itemdetail2=document.getElementById('item_detail2');
+        var ppitemdetail2='<div class="title">获取增氧机信息失败！</div>';
+        $api.append(itemdetail2,ppitemdetail2);
+
+        var itemdetail3=document.getElementById('item_detail3');
+        var ppitemdetail3='<span class="price">获取增氧机信息失败！</span>';
+        $api.append(itemdetail3,ppitemdetail3);
+
+        /*
+        var itemdetail4=document.getElementById('item_detail4');
+        var ppitemdetail4='<span class="price">获取增氧机信息失败！</span>';
+        $api.append(itemdetail4,ppitemdetail4);
+
+        var itemdetail5=document.getElementById('item_detail5');
+        var ppitemdetail5='<div class="infotitle">获取增氧机信息失败！</div>'
+        +'<div class="infotitle">可能原因：该台设备已经不存在！请刷新订单！</div>';
+        $api.append(itemdetail5,ppitemdetail5);
+        */
+
+        var myclock1=document.getElementById('myclock1');
+        var myclock2=document.getElementById('myclock2');
+        var ppmyclock1='无';
+        var ppmyclock2='无';
+        $api.append(myclock1,ppmyclock1);
+        $api.append(myclock2,ppmyclock2);
+
+		 	}
+		});
+
+//打印温度
+    var mytemp=document.getElementById('mytemp');
+    var ppmytemp=0;
+    api.ajax({
+  	    url: 'http://106.13.102.168:8080/IntelligenceFisheriesWeb/servlet/ControlMsgServlet',
+  	    method: 'post',
+  	    cache:'false',
+  	    timeout:15,
+  	    data: {
+  	        values: {
+              Order: 'SendMsg',
+              //content: 'F40000EF'   temperature     gps
+              content: 'F40000EF'
+            }
+  	    }
+  		},function(ret, err){
+        api.hideProgress();
+  	    if (ret) {
+              //ppitemdetail111+=ret.temperature;
+              var aaaaa=ret.temperature;
+              ppmytemp=parseInt(aaaaa,16);
+              $api.append(mytemp,ppmytemp);
+            }
+  		 	else {
+          //var itemdetail111=document.getElementById('item_detail111');
+          ppmytemp=30;
+          $api.append(mytemp,ppmytemp);
+  		 	}
+  		});
+
+//在最下面打印试试看
+/*
+      var itemdetail111=document.getElementById('item_detail111');
+      var ppitemdetail111='';
+      api.ajax({
+          url: 'http://106.13.102.168:8080/IntelligenceFisheriesWeb/servlet/ControlMsgServlet',
+          method: 'post',
+          cache:'false',
+          timeout:15,
+          data: {
+              values: {
+                Order: 'SendMsg',
+                //content: 'F40000EF'   temperature     gps
+                content: 'F4FFFFED'
+              }
+          }
+        },function(ret, err){
+          api.hideProgress();
+          if (ret) {
+                //ppitemdetail111+=ret.temperature;
+                ppitemdetail111+=ret.gps;
+
+                $api.append(itemdetail111,ppitemdetail111);
+              }
+          else {
+            //var itemdetail111=document.getElementById('item_detail111');
+            ppitemdetail111+='获取增氧机信息失败！';
+            $api.append(itemdetail111,ppitemdetail111);
+          }
+        });
+*/
+
+//调用地图定位
+/*
+      var bMap = api.require('bMap');
+      bMap.getLocation({
+          accuracy: '100m',
+          autoStop: true,
+          filter: 1
+      }, function(ret, err) {
+          if (ret.status) {
+              var map = api.require('bMap');
+              map.getNameFromCoords({
+                  lon: ret.lon,
+                  lat: ret.lat
+              }, function(ret, err) {
+                if (ret.status) {
+                  var myaddress=document.getElementById('myaddress');
+                  var ppmyaddress=JSON.stringify(ret.address);
+                  var pplen=ppmyaddress.length;
+                  ppmyaddress=ppmyaddress.substring(1,pplen-1);
+                  $api.append(myaddress,ppmyaddress);
+                }
+            });
+          } else {
+            var myaddress=document.getElementById('myaddress');
+            var ppmyaddress='未定位';
+            $api.append(myaddress,ppmyaddress);
+          }
+      });
+*/
+//用单片机传来的经纬度定位
+
+    var jlon=0;
+    var wlat=0;
+    api.ajax({
+        url: 'http://106.13.102.168:8080/IntelligenceFisheriesWeb/servlet/ControlMsgServlet',
+        method: 'post',
+        cache:'false',
+        timeout:15,
+        data: {
+            values: {
+              Order: 'SendMsg',
+              content: 'F4FFFFED'
+            }
+        }
+      },function(ret, err){
+        api.hideProgress();
+        if (ret) {
+              var tempStr=ret.gps;
+              var tempArr = tempStr.split(",");
+              wlat = tempArr[0];
+              jlon = tempArr[1];
+            }
+        else {
+          var myaddress=document.getElementById('myaddress');
+          var ppmyaddress='长沙市岳麓区湖南大学';
+          $api.append(myaddress,ppmyaddress);
+        }
+      });
+      var map = api.require('bMap');
+      map.getNameFromCoords({
+          lon: jlon,
+          lat: wlat
+      }, function(ret, err) {
+        if (ret.status) {
+          var myaddress=document.getElementById('myaddress');
+          var ppmyaddress=JSON.stringify(ret.address);
+          var pplen=ppmyaddress.length;
+          ppmyaddress=ppmyaddress.substring(1,pplen-1);
+          $api.append(myaddress,ppmyaddress);
+        }
+      });
+
+
+	}
+
+  function ItemSwitch(){
+    api.showProgress({
+        style: 'default',
+        animationType: 'fade',
+        title: '努力加载中...',
+        text: '先喝杯茶...',
+        modal: false
+    });
+    api.ajax({
+        url: 'http://129.204.152.137:8080/project_member/ItemEditServlet',
+        method: 'post',
+        cache:'false',
+        timeout:15,
+        dataType:'text',
+        data: {
+            values: {
+              ino : ino,
+              sswitch:sswitch
+            }
+        }
+    },
+    function(ret, err){
+      api.hideProgress();
+        if(ret=='ok'){
+          if(sswitch==1){
+            api.ajax({
+                url: 'http://106.13.102.168:8080/IntelligenceFisheriesWeb/servlet/ControlMsgServlet',
+                method: 'post',
+                cache:'false',
+                timeout:15,
+                data: {
+                    values: {
+                      Order: 'SendMsg',
+                      //content: 'F00000EF'  guan     F0FFFFED  kai
+                      content: 'F00000EF'
+                    }
+                }
+              },function(ret, err){
+                api.hideProgress();
+                if (ret) {
+                  alert('操作成功');
+                  api.execScript({
+                      name: 'root',
+                      frameName: 'first_frame',
+                      script: 'showItemList();'
+                  });
+                  api.execScript({
+                      name: 'myitemdetail',
+                      frameName: 'myitemdetail_body',
+                      script: 'itemdetailrefresh();'
+                  });
+                  //api.closeWin();
+                  /*
+                  api.closeToWin({
+                    name: 'root'
+                  });
+                  */
+                  itemrefresh();
+                }
+                else {
+                  alert('操作失败' );
+                  api.execScript({
+                      name: 'root',
+                      frameName: 'first_frame',
+                      script: 'showItemList();'
+                  });
+                }
+              });
+          }else{
+            api.ajax({
+                url: 'http://106.13.102.168:8080/IntelligenceFisheriesWeb/servlet/ControlMsgServlet',
+                method: 'post',
+                cache:'false',
+                timeout:15,
+                data: {
+                    values: {
+                      Order: 'SendMsg',
+                      //content: 'F00000EF'  guan     F0FFFFED  kai
+                      content: 'F0FFFFED'
+                    }
+                }
+              },function(ret, err){
+                api.hideProgress();
+                if (ret) {
+                  alert('操作成功');
+                  api.execScript({
+                      name: 'root',
+                      frameName: 'first_frame',
+                      script: 'showItemList();'
+                  });
+                  api.execScript({
+                      name: 'myitemdetail',
+                      frameName: 'myitemdetail_body',
+                      script: 'itemdetailrefresh();'
+                  });
+                  //api.closeWin();
+                  /*
+                  api.closeToWin({
+                    name: 'root'
+                  });
+                  */
+                  itemrefresh();
+                }
+                else {
+                  alert('操作失败' );
+                  api.execScript({
+                      name: 'root',
+                      frameName: 'first_frame',
+                      script: 'showItemList();'
+                  });
+                }
+              });
+          }
+        }else{
+          alert('操作失败' );
+          api.execScript({
+              name: 'root',
+              frameName: 'first_frame',
+              script: 'showItemList();'
+          });
+        }
+    });
+}
+
+function itemrefresh(){
+  location.reload();
+}
+
+function SetClock(){
+  if(clock==1){
+    api.showProgress({
+        style: 'default',
+        animationType: 'fade',
+        title: '努力加载中...',
+        text: '先喝杯茶...',
+        modal: false
+    });
+    api.ajax({
+        url: 'http://129.204.152.137:8080/project_member/ItemClockDelServlet',
+        method: 'post',
+        cache:'false',
+        timeout:15,
+        dataType:'text',
+        data: {
+            values: {
+              ino : ino
+            }
+        }
+    },
+    function(ret, err){
+      api.hideProgress();
+        if(ret=='ok'){
+              alert('操作成功');
+              api.execScript({
+                  name: 'root',
+                  frameName: 'first_frame',
+                  script: 'showItemList();'
+              });
+              //api.closeWin();
+              /*
+              api.closeToWin({
+                name: 'root'
+              });
+              */
+              itemrefresh();
+        }else{
+          alert('操作失败' );
+          api.execScript({
+              name: 'root',
+              frameName: 'first_frame',
+              script: 'showItemList();'
+          });
+        }
+    });
+  }else{
+    api.openWin({
+      name: 'myitemclock',
+      url: './myitemclock_header.html',
+      bounces: false,
+      delay:200,
+      pageParam: {
+          //type: ttype,
+          tino: ino
+          //sswitch: tsswitch
+      }
+    });
+  }}
+
+/*
+function openClock(){
+  if(clock==1){
+    alert('定时已开启！' );
+  }else{
+    api.openWin({
+			name: 'myitemclock',
+			url: './myitemclock_header.html',
+			bounces: false,
+			delay:200,
+			pageParam: {
+					//type: ttype,
+					tino: ino
+					//sswitch: tsswitch
+			}
+		});
+  }
+}
+
+function deleteClock(){
+  if(clock==1){
+    api.showProgress({
+        style: 'default',
+        animationType: 'fade',
+        title: '努力加载中...',
+        text: '先喝杯茶...',
+        modal: false
+    });
+    api.ajax({
+        url: 'http://129.204.152.137:8080/project_member/ItemClockDelServlet',
+        method: 'post',
+        cache:'false',
+        timeout:15,
+        dataType:'text',
+        data: {
+            values: {
+              ino : ino
+            }
+        }
+    },
+    function(ret, err){
+      api.hideProgress();
+        if(ret=='ok'){
+              alert('操作成功');
+              api.execScript({
+                  name: 'root',
+                  frameName: 'first_frame',
+                  script: 'showItemList();'
+              });
+              //api.closeWin();
+              api.closeToWin({
+                name: 'root'
+              });
+        }else{
+          alert('操作失败' );
+          api.execScript({
+              name: 'root',
+              frameName: 'first_frame',
+              script: 'showItemList();'
+          });
+        }
+    });
+  }else{
+    alert('当前未定时！' );
+  }
+}
+*/
+
+function openItemMend(){
+    api.openWin({
+			name: 'myitemmend',
+			url: './myitemmend_header.html',
+			bounces: false,
+			delay:200,
+			pageParam: {
+					tino: ino
+			}
+		});
+}
+
+function goback () {
+  api.closeWin();
+}
+
+
+  </script>
+  </html>

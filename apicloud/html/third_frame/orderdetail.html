@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>首页</title>
+<link rel="stylesheet" type="text/css" href="../../css/api.css" />
+<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+
+<style>
+html, body {width: 100%;min-height: 100%;background: #f0f0f0;}
+.h80 {height: 80px;}
+.h40 {height: 40px;}
+.h20 {height: 20px;}
+  .h10 {height: 10px;background: #f0f0f0;}
+.h1 {height: 1px;margin-left: 15px;background: #f0f0f0;}
+.fr {float: right;}
+.fl {float: left;}
+.hightitem {background-color: #fff;}
+.inwrap {padding-right: 15px;padding-left: 15px;}
+
+/* 2. 价格样式 */
+.priceitem {height: 60px; line-height: 60px;border-bottom: 1px solid #ccc;}
+.priceitem .price, .priceitem .symbol {color: #FC5500;}
+.priceitem .price {font-size: 20px;}
+.priceitem .o-price {font-size: 12px; color: #666;}
+.priceitem .buynow {background-color: #FC5500; color: #fff; height: 25px; line-height: 25px; border-radius: 3px;padding: 10px 20px;margin-top: 7px;}
+
+/* 3. */
+.brief .title {height: 50px;line-height: 50px;font-size: 18px;color: #000;}
+.brief .describe {color: #666;font-size: 14px;line-height: 20px;}
+.brief .ico {height: 50px;line-height: 50px;font-size: 14px;color: #7AB388;}
+.brief .ico img {height: 14px;}
+/* 4. */
+.goodcomment {height: 50px;line-height: 50px;font-size: 14px;}
+.goodcomment img {height: 15px;padding-right: 5px;}
+.goodcomment .arrow {float: right;height: 20px;padding-top: 15px;}
+.goodcomment .commentnum {font-size: 15px;color: #666;padding-right: 5px;float: right;}
+
+/* 5. */
+.darktitle {height: 50px;line-height: 50px;font-size: 14px;color: #666;}
+.firstrow {position: relative;}
+.secrow {font-size: 14px;color: #666;border-bottom: 1px solid #e0e0e0;padding-bottom: 15px;}
+.shopinfo .left {height: 60px;padding: 10px 0;}
+.shopinfo .right {position: absolute;top: 0px; right: -15px; padding: 15px;border-left: 1px solid #e0e0e0;}
+.shopinfo .right img {height: 36px;}
+.shopinfo .shopname {font-size: 20px;}
+.moreshop {height: 50px;line-height: 50px;font-size: 14px;}
+
+/* 6. */
+.tuanitem {height: 50px;line-height: 50px;font-size: 14px;border-bottom: 1px solid #e0e0e0;}
+.tuanitem .tuan02,.tuanitem .tuan03,.tuantotalprice .totalprice01, .tuantotalprice .totalprice02, .tuanrealprice .realprice01, .tuanrealprice .realprice02 {float: right; width: 50px;font-size: 14px;}
+.tuantotalprice {margin-top: 10px;}
+.tuantotalprice, .tuanrealprice {height: 30px;}
+.tuanrealprice .realprice02 {font-size: 16px;color: #FC5500;}
+.tuanitem .tuan03, .tuantotalprice .totalprice02, .tuanrealprice .realprice02 {text-align: right;}
+.smallitem .averageprice {float: right;}
+.smallitem {height: 20px;line-height: 20px;font-size: 14px;}
+.recommandtitle {line-height: 25px; font-size: 14px; color: #666;}
+.recommanddish {line-height: 22px; font-size: 14px;}
+.moredetail {height: 50px;line-height: 50px;font-size: 14px;border-top: 1px solid #e0e0e0;}
+.lastitem {padding-bottom: 10px;}
+
+/* 7. */
+.buyinfo .infotitle {line-height: 25px;font-size: 14px;color: #666;}
+.buyinfo li {line-height: 24px;font-size: 13px;color: #000;}
+.buyinfo li img {height: 5px; padding-right: 5px;}
+.arrow {float: right;height: 20px;padding-top: 15px;}
+
+/* 8. */
+.othertuan {height: 50px;line-height: 50px;}
+.othertuan .price, .othertuan .symbol {color: #FC5500;}
+.othertuan .price {font-size: 15px;}
+.othertuan .o-price {font-size: 12px; color: #666;}
+.othertuan .price01 {display: inline-block; width: 30%; vertical-align: top;}
+.othertuan .title {width: 50%; white-space: nowrap; text-overflow: ellipsis; word-wrap: normal; overflow: hidden;}
+.bb {border-bottom: 1px solid #e0e0e0;}
+
+.presshover {background-color: #FAFAFA;}
+.buyhover {background-color: rgba(252, 85, 0, 0.6) !important;}
+.swiper-container img {width: 100%;}
+</style>
+</head>
+<body>
+
+<!-- 2. 价格样式 -->
+<div class="priceitem hightitem inwrap" id="item_detail1">
+<!--<span class="symbol">¥</span>-->
+<!--<del class="o-price">¥30</del>-->
+<!--
+    <span class="price">ASDL-001</span>
+    <div class="buynow fr" tapmode="buyhover" onclick="">开启设备</div>-->
+</div>
+
+<!-- 3.  -->
+<div class="brief inwrap hightitem" id="item_detail2">
+  <!--
+<div class="title">ASDL-001型号增氧机</div>
+<div class="describe">XXXXXXXXXXXXXXXXX</div>
+<div class="ico"><img src="../image/icon_pay_success.png" alt=""> 运行中</div>-->
+</div>
+
+<!-- 7 参数查询-->
+<div class="darktitle inwrap">参数查询</div>
+<div class="buyinfo hightitem inwrap" id="item_detail3">
+
+</div>
+
+
+<div class="h20"></div>
+
+</body>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript" src="../../script/idangerous.swiper.js"></script>
+<script>
+
+var oid = "";
+
+apiready=function(){
+	oid = api.pageParam.roid;
+//oid=10;
+api.showProgress({
+    style: 'default',
+    animationType: 'fade',
+    title: '努力加载中...',
+    text: '先喝杯茶...',
+    modal: false
+});
+	api.ajax({
+	    url: 'http://129.204.152.137:8080/project_member/OrderDetailServlet',
+	    method: 'post',
+	    cache:'false',
+	    timeout:15,
+	    data: {
+	        values: {
+  					oid: oid
+          }
+	    }
+		},function(ret, err){
+      api.hideProgress();
+	    if (ret[0]) {
+						var itemdetail1=document.getElementById('item_detail1');
+						var ppitemdetail1="<span class='price'>订单号："+ret[0].ooid+"</span>";
+						if(parseInt(ret[0].ostate)==1){
+							ppitemdetail1+="<div class='buynow fr' tapmode='buyhover' onclick='ItemAdd()' >绑定设备</div>";
+						}
+		        $api.append(itemdetail1,ppitemdetail1);
+
+						var itemdetail2=document.getElementById('item_detail2');
+            var ppitemdetail2='<div class="title">下单时间：'+ret[0].otime+'</div>'
+                              +'<div class="describe">型号：'+ret[0].type+'</div>'
+                              +'<div class="describe">代理商：'+ret[0].uid+'</div>'
+                              +'<div class="ico">';
+            if (parseInt(ret[0].ostate)==0){
+              ppitemdetail2+='<img src="../../image/ostate0.png" alt=""> <font color="#b61601">待发货</font> </div>';
+            }else if (parseInt(ret[0].ostate)==1){
+              ppitemdetail2+='<img src="../../image/ostate1.png" alt=""> <font color="#ee660a">待绑定</font> </div>';
+            }else if (parseInt(ret[0].ostate)==2){
+              ppitemdetail2+='<img src="../../image/ostate2.png" alt=""> <font color="#098511">使用中</font> </div>';
+            }else {
+              ppitemdetail2+='<img src="../../image/ostate3.png" alt=""> <font color="#0720b4">已结束</font> </div>';
+            }
+            $api.append(itemdetail2,ppitemdetail2);
+
+						var itemdetail3=document.getElementById('item_detail3');
+		    		var ppitemdetail3='<div class="infotitle">品牌</div><ul><li><img src="../../image/home_serve_dot.png" alt="">'
+                            +ret[0].brand
+                            +'</li></ul><div class="infotitle">租售情况</div><ul><li><img src="../../image/home_serve_dot.png" alt="">';
+            if(parseInt(ret[0].buystate)==0){
+                ppitemdetail3+='租赁</li></ul><div class="infotitle">总价</div>'
+                              +'<ul><li><img src="../../image/home_serve_dot.png" alt="">'
+                              +ret[0].zongjia
+                              +'</li></ul><div class="infotitle">租赁时长</div><ul><li><img src="../../image/home_serve_dot.png" alt="">'
+                              +ret[0].renttime
+                              +'</li></ul><div class="infotitle">租金</div><ul><li><img src="../../image/home_serve_dot.png" alt="">¥'
+                              +ret[0].zujing
+                              +'/天</li></ul><div class="infotitle">押金</div><ul><li><img src="../../image/home_serve_dot.png" alt="">¥'
+                              +ret[0].yajing;
+            }else{
+                ppitemdetail3+='购买</li></ul><div class="infotitle">售价</div>'
+                              +'<ul><li><img src="../../image/home_serve_dot.png" alt="">'
+                              +ret[0].zongjia;
+            }
+
+            if (parseInt(ret[0].ostate)==0){
+              ppitemdetail3+='</li></ul><br>';
+            }else if (parseInt(ret[0].ostate)==1){
+              ppitemdetail3+='</li></ul><div class="infotitle">快递公司</div><ul><li><img src="../../image/home_serve_dot.png" alt="">'
+                            +ret[0].kdcompany
+                            +'</li></ul><div class="infotitle">快递单号</div><ul><li class="lastitem"><img src="../../image/home_serve_dot.png" alt="">'
+                            +ret[0].kdno
+                            +'</li></ul><br>';
+            }else{
+              ppitemdetail3+='</li></ul><div class="infotitle">设备编号</div><ul><li><img src="../../image/home_serve_dot.png" alt="">'
+                            +ret[0].vid
+                            +'</li></ul><div class="infotitle">快递公司</div><ul><li><img src="../../image/home_serve_dot.png" alt="">'
+                            +ret[0].kdcompany
+                            +'</li></ul><div class="infotitle">快递单号</div><ul><li class="lastitem"><img src="../../image/home_serve_dot.png" alt="">'
+                            +ret[0].kdno
+                            +'</li></ul><br>';
+            }
+            $api.append(itemdetail3,ppitemdetail3);
+
+          }
+		 	else {
+        var itemdetail1=document.getElementById('item_detail1');
+        var ppitemdetail1='<span class="price">获取增氧机信息失败！</span>';
+        $api.append(itemdetail1,ppitemdetail1);
+
+        var itemdetail2=document.getElementById('item_detail2');
+        var ppitemdetail2='<div class="title">获取增氧机信息失败！</div>';
+        $api.append(itemdetail2,ppitemdetail2);
+
+        var itemdetail3=document.getElementById('item_detail3');
+        var ppitemdetail3='<div class="infotitle">获取增氧机信息失败！</div>'
+        +'<div class="infotitle">可能原因：该台设备已经不存在！请刷新订单！</div>';
+        $api.append(itemdetail3,ppitemdetail3);
+		 	}
+		});
+	}
+
+	function ItemAdd()
+  {
+    api.openWin({
+      name: 'additem',
+      url: './additem_header.html',
+      bounces: false,
+      delay:200,
+      pageParam: {
+          adoid: oid
+      }
+    });
+  }
+
+
+</script>
+</html>

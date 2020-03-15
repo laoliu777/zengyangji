@@ -1,0 +1,318 @@
+
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"content="initial-scale=1, maximum-scale= 1, minimum-scale=1, user-scalable=no">
+  <title>注册第一个页面</title>
+<style>
+/*基本初始化*/
+html,body{
+     margin: 0px;
+      padding: 0px;
+      border: 0px;
+      height: 100%;}
+body{background-color: #F5F5F5;
+  display: flex;
+  flex-direction: column;}
+
+/*基本操作 */
+  .juzhong{justify-content:center;align-items:center;text-align:center;}
+  .ceshi{background-color: red;}
+
+/*主体框架*/
+.body-a{flex: 0 0 5%;display: flex;}
+.body-b{flex: 0 0 15%;display: flex;}
+.body-c{flex: 0 0 20%;display: flex;flex-direction: column;}
+
+/*顶端*/
+.fanhui{flex: 0 0 15%;
+  background-image: url(../../image/suoyou/fanhui1.png);
+  background-repeat: no-repeat;
+  background-size:25px;
+  background-position:left; }
+  .zhuce{flex: 0 0 20%;font-size:1.4em;color:#0099FF}
+
+       /*中端*/
+       .body-b-1{flex: 0 0 100%;font-size: 1.8em;}
+        .body-f{flex: 0 0 10%;text-align: center;} .body-e-1{flex: 0 0 100%;font-size: 0.8em;color:#333333; }
+        .button1{width:85%;height:50px;background-color:#FF9913;border:none;border-radius:5px;color:white;font-size:1.2rem;}
+       /*所有输入框的样式*/
+         input[type=text], input[type=password] {
+            border-color: #bbb;
+            height: 38px;
+            font-size: 14px;
+            border-radius: 2px;
+            outline: 0;
+            border: #ccc 1px solid;
+            padding: 0 10px;
+            width: 250px;
+            -webkit-transition: box-shadow .5s;
+            margin-bottom: 15px;
+        }
+
+            input[type=text]:hover,  input[type=text]:focus, input[type=password]:hover,  input[type=password]:focus {
+                border: 1px solid #56b4ef;
+                box-shadow: inset 0 1px 3px rgba(0,0,0,.05),0 0 8px rgba(82,168,236,.6);
+                -webkit-transition: box-shadow .5s;
+            }
+
+
+</style>
+</head>
+
+<body>
+
+<div class="body-a">
+  <div style="flex: 0 0 76%"></div>
+  <div class="zhuce juzhong"  style="display:flex;" onclick="openzhuce()">
+    注册
+  </div>
+</div>
+
+
+<div class="" style="flex:0 0 10%"></div> <!--留白 10-->
+<div class="body-b juzhong"> <div class="body-b-1" style=""> <b> To Go 账号登录 </b></div> </div>
+
+
+
+<div class="" style="flex:0 0 10%;display:flex;">
+    <div style="flex:0 0 100%;display:flex;" class="juzhong" >
+          <input type="text" name="username" placeholder="国内手机号/用户名"  id="username" style="width:80%"
+          onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" maxlength="11">
+    </div>
+</div>
+
+<div class="" style="flex:0 0 10%;display:flex;">
+  <div class="" style="flex:0 0 7%"></div>  <!--留白 -->
+      <div class="" style="flex:0 0 63%;display:flex;" >
+      <input type="password" name="userpass" placeholder="请输入密码"   id="password" style="width:80%;"
+       onkeyup="value=value.replace(/[\W]/g,'') "
+       onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))" maxlength="20">
+       <div class="juzhong" style="flex:0 0 20%;display:flex;">
+<img src="../../image/eyeclose.png" style="width:30px;height:30px;"alt="" onclick="changeeye()" id='eye'>
+       </div>
+      </div>
+
+      <div class="juzhong" style="flex:0 0 30% ;display:flex;color:#0099FF;justify-content:flex-start;font-size:1.0em;" onclick="openwangji1()">
+        &nbsp &nbsp&nbsp <b>忘记密码</b>
+      </div>
+ <!--留白 -->
+</div>
+
+<div class="" style="flex:0 0 5%"></div>  <!--留白 5 -->
+<div class="juzhong" style="flex:0 0 20%;font-size: 1.5em;color:#333333;">
+  <button type="button" name="button" class="button1" onclick="login()">登录</button>
+</div>
+<div class="" style="flex:0 0 15%">
+
+</div>
+<div class="body-f"> <div class="body-e-1"> <span>登陆即代表你同意我们的<span> <span style="color:#0099FF;"><b>服务协议</b> </span>和 <span style="color:#0099FF"> <b>隐私政策</b> </span>  </div> </div>
+</body>
+
+
+</html>
+<script>
+function login(){
+  var tel=document.getElementById('username').value;
+  var pass=document.getElementById('password').value;
+  api.showProgress({
+      style: 'default',
+      animationType: 'fade',
+      title: '努力加载中...',
+      text: '先喝杯茶...',
+      modal: false
+  });
+api.ajax({
+    url: 'http://111.230.181.135:8080/togo/login',
+    method: 'post',
+    cache:'false',
+    timeout:15,
+    dataType:'text',
+    data: {
+        values: {
+          telephone:tel,
+             password : pass
+        }
+    }
+},function(ret, err){
+  api.hideProgress();
+    if (ret) {api.hideProgress();
+      if(ret=="s"){
+        api.ajax({
+            url: 'http://111.230.181.135:8080/togo/showxinxi',
+            method: 'post',
+              cache:'false',
+            timeout:15,
+            data: {
+                values: {
+                      telephone:tel
+                }
+            }
+        },function(ret, err){
+            if (ret) {
+
+          if(ret[0].score){
+                localStorage.setItem('jifen',ret[0].score);}
+                else {
+                  localStorage.removeItem('jifen');
+                }
+                if(ret[0].nickname){  localStorage.setItem('nick',ret[0].nickname);}
+                else {
+                  localStorage.removeItem('nick');
+                }
+                if(ret[0].touxiang){  localStorage.setItem('touxiang',ret[0].touxiang);}
+                else {
+                  localStorage.removeItem('touxiang');
+                }
+                api.execScript({
+                    name: 'root',
+                    frameName: 'frame2',
+                    script: 'ref();'
+                });
+                alert('登陆成功');
+                    localStorage.setItem('log',tel);
+                    api.execScript({
+                        name: 'root',
+                        frameName: 'frame3',
+                        script: 'ref();'
+                    });
+
+                api.closeWin();
+            } else {
+                alert( JSON.stringify( err ) );
+            }
+        });
+      }
+    } else {api.hideProgress();
+        alert('用户或密码错误' );
+    }
+});
+}
+
+//var i  =
+//i.style
+var eyei=0;
+function changeeye(){
+    var ele=document.getElementById('eye');
+      var pas=document.getElementById('password');
+  if(eyei==0){
+    ele.src="../../image/eyeopen.png";
+    pas.type="text";
+eyei=1;}
+else {
+  ele.src="../../image/eyeclose.png";
+  pas.type="password";eyei=0;
+}
+}
+
+function  openwangji1(){
+api.openWin({
+    name: 'wangji1',
+    url: 'wangjimima1.html',
+});}
+
+function openzhuce(){
+  api.openWin({
+      name: 'page2',
+      url: 'zhuce1.html',
+  });
+}
+
+function zhucechenggong_alert(){
+  var dialogBox = api.require('dialogBox');
+  dialogBox.raffle({
+      texts: {
+          title: '注册成功',
+          mainText: '欢迎加入 To_Go 大家庭',
+          subText: '请尽快到 [我的] 界面完善个人信息！',
+          leftTitle: '暂不登录',
+          rightTitle: '立即登录'
+      },
+      styles: {
+          bg: '#fff',
+          w: 300,
+          title: {
+              size: 14,
+              color: '#000'
+          },
+          icon: {
+              marginT: 20,
+              w: 80,
+              h: 80,
+              iconPath: 'widget://image/wode/touxiang.jpg'
+          },
+          main: {
+              marginT: 20,
+              color: '#636363',
+              size: 13
+          },
+          sub: {
+              marginT: 8,
+              color: '#999999',
+              size: 12
+          },
+          left: {
+              marginB: 7,
+              marginL: 18,
+              w: 130,
+              h: 35,
+              corner: 2,
+              bg: '#fff',
+              color: '#007FFF',
+              size: 12
+          },
+          right: {
+              marginB: 7,
+              marginL: 18,
+              w: 130,
+              h: 35,
+              corner: 2,
+              bg: '#fff',
+              color: '#007FFF',
+              size: 12
+          }
+      }
+  }, function(ret, err) {
+      if (ret) {
+          if(ret.eventType=='left') {
+
+            dialogBox.close({
+                dialogName: 'alert'
+            });
+
+          }
+
+            if(ret.eventType=='right') {
+                ////////////////////////
+                dialogBox.close({
+                    dialogName: 'alert'
+                });
+                  var hao=localStorage.getItem('reg');
+                  localStorage.setItem('log',hao);
+                  localStorage.removeItem('jifen');
+                    localStorage.removeItem('nick');
+                      localStorage.removeItem('touxiang');
+                      api.execScript({
+                          name: 'root',
+                          frameName: 'frame3',
+                          script: 'ref();'
+                      });
+                      api.execScript({
+                          name: 'root',
+                          frameName: 'frame2',
+                          script: 'ref();'
+                      });
+                      api.closeToWin({
+                          name: 'root'
+                      });
+          }
+      } else {
+          alert(JSON.stringify(err));
+      }
+  });
+}
+
+
+</script>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"content="initial-scale=1, maximum-scale= 1, minimum-scale=1, user-scalable=no">
+      <link rel="stylesheet" type="text/css" href="aui.css" />
+
+  <title>my</title>
+<style>
+html,body{
+     margin: 0px;
+      padding: 0px;
+      border: 0px;
+      height: 100%;}
+      .ceshi{background-color: red;}
+      body{background-color: #F5F5F5;display: flex;flex-direction: column;}
+      .body-a{flex: 0 0 10%;display: flex;border-bottom: 1px solid #cccccc;}
+      .body-a-1{flex: 0 0 15%;
+
+        background-image: url(../../image/suoyou/fanhui1.png);
+        background-repeat: no-repeat;
+        background-size:20px;
+        background-position:left; }
+              .body-a-2{flex: 0 0 60%;display: flex;align-items:center;justify-content: center;text-align: center;font-size: 1.3em;}
+
+      .body-b{flex: 0 0 30%;display: flex;flex-direction: column;}
+              .shurushoujihao{flex: 0 0 40%;}
+                    .body-b2{flex: 0 0 40%;}
+
+                                                 input[type=text], input[type=password] {
+                                                    border-color: #bbb;
+                                                    height: 38px;
+                                                    font-size: 14px;
+                                                    border-radius: 2px;
+                                                    outline: 0;
+                                                    border: #ccc 1px solid;
+                                                    padding: 0 10px;
+                                                    width: 250px;
+                                                    -webkit-transition: box-shadow .5s;
+                                                    margin-bottom: 15px;
+                                                }
+
+                                                    input[type=text]:hover,  input[type=text]:focus, input[type=password]:hover,  input[type=password]:focus {
+                                                        border: 1px solid #56b4ef;
+                                                        box-shadow: inset 0 1px 3px rgba(0,0,0,.05),0 0 8px rgba(82,168,236,.6);
+                                                        -webkit-transition: box-shadow .5s;
+                                                    }
+
+
+.juzhong {text-align: center;justify-content: center;align-items: center;}
+.button2{width:90%;height:50%;margin-left:6%;background-color:#FF9A14;border:none;border-radius:5px;color:#FFECD2;font-size: 1.0em;}
+</style>
+</head>
+
+<div class="body-a">
+<div class=" " style="flex:0 0 5%;"></div>
+  <div class="body-a-1" onclick="api.closeWin();">  </div>
+  <div class="body-a-2">
+    <b>忘记密码</b>
+    <b> <span style="color:#FF9913"> &nbsp &nbsp3/3 </b></span>
+
+  </div>
+</div>
+
+
+
+<div class="body-b" style="" >
+  <div class="" style="flex:0 0 20%"></div>  <!-- 50-->
+  <div class=" shurushoujihao juzhong" style="font-size:1.5em;display:flex;" > <b>设置密码</b> </div>
+    <div class="" style="flex:0 0 10%"></div>  <!-- 50-->
+  <div class="body-b-2" style="font-size:1.1em;text-align:left;margin-left:6%;color:#cccccc;" >
+    <form style="">
+     <input type="text" name="username" placeholder="设置新密码" id="pass" style="width:90%;height:40px;"
+     onkeyup="value=value.replace(/[\W]/g,'') "
+     onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))" maxlength="20">
+   </form>
+ </div>
+</div>
+
+
+
+<div style="flex:0 0 10%">
+  <form style="margin-left:6%;"> <input type="text" name="username" placeholder="再次确认密码" id="pass1"style="width:90%;height:40px;"
+    onkeyup="value=value.replace(/[\W]/g,'') "
+    onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))" maxlength="20"> </form>
+</div>
+
+<div class="juzhong" style="flex:0 0 5%;display:flex;font-size:0.8em;align-items:flex-start;color:#cccccc;">
+<b>密码需为8~20位数字、字母组合，不含空格和符号。</b>
+</div>
+<div style="flex:0 0 15%">
+  <button onclick="setpass()" type="button" name="button" style="" class="button2" ><b>完成</b></button>
+
+</div>
+<div class="" style="flex:0 0 19%;">
+</div>
+<div style="flex:0 0 10%;" class="juzhong"></div>
+</body>
+
+
+</html>
+<script type="text/javascript">
+var neddtel="";
+
+apiready=function(){
+  neddtel=api.pageParam.mtel;
+}
+
+function setpass(){
+  //var tel=localStorage.getItem('mimatel');
+  var pass=document.getElementById('pass').value;
+  var pass1=document.getElementById('pass1').value;
+  if(pass==pass1&&pass!=null&&pass.length>=8){
+    api.showProgress({
+        style: 'default',
+        animationType: 'fade',
+        title: '努力加载中...',
+        text: '先喝杯茶...',
+        modal: false
+    });
+    api.ajax({
+        url: 'http://129.204.152.137:8080/project_member/SetPassword',
+        method: 'post',
+        dataType:'text',
+        cache:'false',
+        timeout:15,
+        data: {
+            values: {
+                mtel:neddtel,
+                mpassword:pass
+            }
+        }
+    },function(ret, err){
+      api.hideProgress();//隐藏加载进度框
+        if (ret) {
+          alert("成功修改密码");
+          api.closeToWin({
+              name: 'login'
+          });
+        } else {
+            alert("密码修改失败！");
+        }
+    });
+  }
+  else {
+    if(pass.length<8){
+      alert("密码长度过短...");
+    }
+    else {
+      alert("密码输入不一致...");
+    }
+  }
+}
+
+</script>

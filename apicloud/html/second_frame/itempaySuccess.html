@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>首页</title>
+<link rel="stylesheet" type="text/css" href="../css/api.css" />
+<link rel="stylesheet" type="text/css" href="../css/common.css" />
+<link rel="stylesheet" href="../css/idangerous.swiper.css">
+
+<style>
+html, body {width: 100%;min-height: 100%;background: #f0f0f0;text-align:center }
+.h80 {height: 80px;}
+.h40 {height: 40px;}
+.h20 {height: 20px;}
+.h10 {height: 10px;background: #f0f0f0;}
+.h1 {height: 1px;margin-left: 15px;background: #f0f0f0;}
+.fr {float: right;}
+.fl {float: left;}
+.hightitem {background-color: #fff;}
+.inwrap {padding-right: 15px;padding-left: 15px;}
+
+</style>
+</head>
+<body>
+
+<div class="h20"></div>
+<div class="h20"></div>
+<!-- 支付成功 -->
+<div>
+<div style="font-size:20px">支付成功<br><br></div>
+<!--<span style="font-size:12px">-->
+<div><img src="../../image/pay_success.png"><br><br><br></div>
+<div style="font-size:20px;"  onclick="BackToMain()">点我返回主界面</div>
+<!--background:#111111-->
+</div>
+
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script>
+
+function BackToMain()
+{
+  api.openWin({
+    name: 'index',
+    url: '../../index.html',
+    bounces: false,
+    delay:200
+  });
+}
+
+
+</script>
+</html>

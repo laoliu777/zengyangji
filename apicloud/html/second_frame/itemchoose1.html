@@ -1,0 +1,311 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <title>Hello APP</title>
+    <link rel="stylesheet" type="text/css" href="../../css/api.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/common.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/idangerous.swiper.css">
+
+    <style>
+        html,body{min-height:100%;background-color: #eee;}
+        body {position: relative;}
+        .h10 {height: 10px;}
+        .h50 {height: 50px;}
+        /* section 1 */
+        .section01 {height: 30px;line-height: 30px;text-align: center;color: #fff;background-color: #5AB06C;}
+
+
+        /**/
+        .item {display: table; height: 70px; width: 100%;}
+        .item .itemlogo , .item .itemshelf {display: table-cell; vertical-align: middle;float: left;}
+
+        .item .itemlogo {width: 70px;}
+        .item .itemlogo img  {margin-left: 10px;width: 40px;}
+        .item .itemshelf .shelfinfo01 {font-size: 18px;color: #000;}
+        .item .itemshelf .shelfinfo02 {font-size: 13px;color: #000;}
+        .item .itemshelf .shelfinfo04 {font-size: 16px;color: #000;}
+
+
+        .item {background-color: #fff;position: relative;border-bottom: 1px solid #d3d3d3;}
+        .item .itemlogo {position: absolute; top: 10px;}
+        .itemshelf {margin-left: 15px;display: block;/* 不再显示为table-cell */}
+        .item .userlogo img {width: 40px;padding: 2px; border: 1px solid #e7e7e7;border-radius: 2px;}
+        .itemshelf .shelfinfo01 {color: #000;font-size: 15px;line-height: 18px;margin-top: 10px;}
+        .itemshelf .ordering{color: #fff;font-size: 12px;background-color: #5bb06c;padding: 2px 4px;display: inline-block;}
+        .style2 .itemshelf .shelfinfo03 {color: #999;font-size: 12px;margin-right: 10px;border-bottom: 0;padding: 3px 0 5px 0;}
+        .itemshelf .staring {color: #999;font-size: 12px;line-height: 14px;margin-top: 5px;margin-bottom: 20px;}
+        .itemshelf .staring img {height: 12px;}
+
+        .item .buybtn {display: table-cell; vertical-align: middle;}  /*抽象布局信息*/
+        .item .buybtn p {color: #fff;background-color: #F75000;float: right;padding: 5px 10px;margin-right: 10px;}
+
+        /* */
+        .shopcover {width: 100%;}
+        .section02 .itemshelf .shelfinfo03 {color: #999; font-size: 14px; margin-right: 10px; border-bottom: 0; padding: 5px 0 5px 0;}
+        .section02 .buybtn {display: table-cell; vertical-align: middle;}  /*抽象布局信息*/
+        .section02 .buybtn p {color: #fff;background-color: #5AB06C;float: right;padding: 5px 10px;margin-right: 10px;font-size: 14px;line-height: 20px;}
+        .section02 .buybtn .weixin {height: 20px; vertical-align: top; margin-right: 5px;}
+
+        .minusorder {float: right;display: none;position: relative;}
+        .minus {color: #fff; background-color: #F75000; float: right; padding: 5px;margin-right: 15px;}
+        .numbg {height: 20px; margin-top: 5px; vertical-align: top;float: right;margin-right: 15px;}
+        .thisordernum {position: absolute; right: 16px; top: 5px; color: #fff; width: 20px; text-align: center; height: 20px;}
+        /* 暗色标题 */
+        .darktitle {height: 30px;line-height: 30px;color: #787878;margin-left: 15px;font-size: 14px;}
+
+        /* 底部信息 */
+        /*FFAF60*/
+        .bottom {height: 50px;background-color: #000000;position: fixed;bottom: 0;width: 100%;}
+        .bottom img {height: 30px;margin-top: 10px;margin-left: 15px;vertical-align: top;}
+        #minbuy {float: right;color: #fff;background-color: #BB3D00;padding: 5px 10px;margin: 11px 10px 0 0;}
+        #buyit {float: right;color: #fff;background-color: #F75000;padding: 5px 10px;margin: 11px 10px 0 0;}
+        .bottom .buyinfo {height: 50px; line-height: 50px; color: #fff;display: none;}
+        .bottom .buyinfo span {color: #fff;}
+
+        /* 悬浮样式 */
+        .itemhover {background-color: #eee !important;}
+        .total-hover {background-color: rgba(247, 80, 0, 0.6) !important;}
+
+        .select {
+        		display: inline-block;
+        		width: 140px;
+        		position: relative;
+        		vertical-align: middle;
+        		padding: 0;
+        		overflow: hidden;
+        		background-color: #fff;
+        		color: #555;
+        		border: 1px solid #aaa;
+        		text-shadow: none;
+        		border-radius: 4px;
+        		transition: box-shadow 0.25s ease;
+        		z-index: 2;
+        	}
+
+        	.select:hover {
+        		box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+        	}
+
+        	.select:before {
+        		content: "";
+        		position: absolute;
+        		width: 0;
+        		height: 0;
+        		border: 10px solid transparent;
+        		border-top-color: #ccc;
+        		top: 14px;
+        		right: 10px;
+        		cursor: pointer;
+        		z-index: -2;
+        	}
+        	.select select {
+        		cursor: pointer;
+        		padding: 10px;
+        		width: 100%;
+        		border: none;
+        		background: transparent;
+        		background-image: none;
+        		-webkit-appearance: none;
+        		-moz-appearance: none;
+        	}
+
+        	.select select:focus {
+        		outline: none;
+        	}
+
+    </style>
+</head>
+<body>
+  <div class="darktitle">用户信息</div>
+<div class="item style2">
+    <div class="itemshelf" id="item_order1">
+      <!--
+      <div class="shelfinfo01"></div>
+        <div class="shelfinfo01">电话：18818881888</div>
+        <div class="shelfinfo01">地址：湖南省长沙市岳麓区湖南大学</div>
+        <br>
+     -->
+    </div>
+</div>
+
+
+<div class="darktitle">设备信息</div>
+<div class="item style2">
+  <div class="itemshelf" id="item_order2">
+    <!--
+      <div class="shelfinfo01">型号：AAAA</div>
+      <div class="shelfinfo01">编号：001</div>
+      <div class="shelfinfo01">租金：¥1/天</div>
+      <div class="shelfinfo01">押金：¥100</div>
+      <br>
+    -->
+  </div>
+</div>
+
+
+  <div class="darktitle">订单信息</div>
+  <div class="item style2">
+      <div class="itemshelf">
+          <div class="shelfinfo01">代理商选择</div>
+          <div class="shelfinfo02">建议选择就近代理商，</div>
+          <div class="shelfinfo02">方便报修</div>
+          <br>
+      </div>
+      <div class="buybtn">
+        <div class="select" id="chooseagent">
+          <!--
+          <select name="cars">
+            <option value="volvo">Volvo</option>
+            <option value="saab">Saab</option>
+            <option value="opel" selected>Opel</option>
+            <option value="audi">Audi</option>
+          </select>
+        -->
+        </div>
+      </div>
+  </div>
+
+    <div class="h50"></div>
+    <div class="bottom">
+        <span id="buyit" tapmode="total-hover" onclick="ItemOrderNew()">确认订单</span>
+    </div>
+
+</body>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript">
+var shoujia=1000;//就是售价
+var mid=localStorage.getItem('log');
+var type = "";
+
+apiready=function(){
+  type = api.pageParam.otype;
+  shoujia =parseInt(api.pageParam.oshoujia);
+
+    var itemorder2=document.getElementById('item_order2');
+    var oitemorder2='<div class="shelfinfo01">型号：'+type
+                    +'</div><div class="shelfinfo04">售价：¥'+shoujia
+                    +'</div><br>';
+    $api.append(itemorder2,oitemorder2);
+
+    api.showProgress({
+        style: 'default',
+        animationType: 'fade',
+        title: '努力加载中...',
+        text: '先喝杯茶...',
+        modal: false
+    });
+    api.ajax({
+        url: 'http://129.204.152.137:8080/project_member/MyInfoServlet',
+        method: 'post',
+        cache:'false',
+        timeout:15,
+  	    data: {
+  	        values: {
+              mid: mid
+            }
+  	    }
+      },function(ret, err){
+        api.hideProgress();
+        if (ret[0]) {
+          var itemorder1=document.getElementById('item_order1');
+          var oitemorder1='<div class="shelfinfo01">收货人：'+mid+'</div><div class="shelfinfo04">电话：'
+                          +ret[0].mtel+'</div><div class="shelfinfo04">地址：'
+                          +ret[0].address+'</div><div class="shelfinfo04">账户余额：¥'
+                          +ret[0].purse+'</div><br>';
+          $api.append(itemorder1,oitemorder1);
+        } else {
+          var itemorder1=document.getElementById('item_order1');
+          var oitemorder1='<div class="shelfinfo01">没有信息！</div><br>';
+          $api.append(itemorder1,oitemorder1);
+        }
+    });
+
+  api.ajax({
+      url: 'http://129.204.152.137:8080/project_member/AgentListServlet',
+      method: 'post',
+      cache:'false',
+      timeout:15
+    },function(ret, err){
+      if (ret) {
+        if(ret.length>0){
+
+          var chooseagent=document.getElementById('chooseagent');
+          var chooseagent1='<select name="cars" id="agenttt"><option value="'
+                          +ret[0].uid+'" selected>'+ret[0].uid+'</option>';
+            for(var i=1;i<ret.length;i++){
+              //ortype = JSON.stringify(ret[i].type);
+              chooseagent1+='<option value="'+ret[i].uid+'">'+ret[i].uid+'</option>';
+            }
+            chooseagent1+='</select>';
+            $api.append(chooseagent,chooseagent1);
+
+          }
+          else {
+          }
+        } else {
+        }
+  });
+
+  //var buyitdom = document.getElementById('buyit');
+  //buyitdom.style.display = 'inline-block';
+}
+
+function ItemOrderNew(){
+    api.showProgress({
+        style: 'default',
+        animationType: 'fade',
+        title: '努力加载中...',
+        text: '先喝杯茶...',
+        modal: false
+    });
+    var agenttt=document.getElementById('agenttt').value;
+
+    api.ajax({
+        url: 'http://129.204.152.137:8080/project_member/Order1ItemServlet',
+        method: 'post',
+        cache:'false',
+        timeout:15,
+        dataType:'text',
+        data: {
+            values: {
+              type:type,
+              oagent :agenttt,
+              mid:mid
+            }
+        }
+    },
+    function(ret, err){
+      api.hideProgress();
+        if(ret=='ok'){
+              alert('操作成功');
+              api.execScript({
+                  name: 'root',
+                  frameName: 'first_frame',
+                  script: 'showItemList();'
+              });
+              //api.closeWin();
+              api.closeToWin({
+                name: 'root'
+              });
+              /*
+              api.openWin({
+                name: 'index',
+                url: '../../index.html',
+                bounces: false,
+                delay:200
+          		});*/
+        }else{
+          alert('余额不足！' );
+          api.execScript({
+              name: 'root',
+              frameName: 'first_frame',
+              script: 'showItemList();'
+          });
+        }
+    });
+}
+
+</script>
+</html>

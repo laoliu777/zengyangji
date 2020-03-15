@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+	<title>全部分类</title>
+	<link rel="stylesheet" type="text/css" href="../../css/api.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/common.css" />
+
+	<style>
+		html, body {width: 100%;min-height: 100%;background: #f0f0f0;}
+		.h80 {height: 80px;}
+		.h40 {height: 40px;}
+		.h20 {height: 20px;}
+    	.h10 {height: 10px;background: #f0f0f0;}
+		.h1 {height: 1px;margin-left: 15px;background: #f0f0f0;}
+		.fr {float: right;}
+		.fl {float: left;}
+		.hightitem {background-color: #fff;}
+		.inwrap {margin: 0 10px;}
+
+		/* 2X2样式 */
+		.row {display: -webkit-box;display: -webkit-flex;}
+		.col {-webkit-box-flex:1; -webkit-flex:1; flex:1;position: relative;}
+		.col img {position: absolute; right: 0; width: 80px; top: 0;}
+		.col .matrixcell {display: table-cell;vertical-align: middle; padding-left: 10px;}
+		.col .matrixcell .title {margin-bottom: 10px;}
+		.matrix {display: table;height: inherit;}
+
+		/* 1. 2X2 */
+		.flipcard {height: 30px; line-height: 30px; text-align: center; margin: 5px 5px 3px 5px; color: #000; background-color: #fff; font-size: 14px;}
+		.darktitle {height: 40px;line-height: 40px;margin-left: 15px;font-size: 14px;color: #666;}
+
+		/* 2. 三列 */
+		.scratch02 .word {margin-top: 10px;margin-left: 10px;}
+		.scratch02 .word .title{font-size: 18px;}
+		.scratch02 .word .info{font-size: 12px;color: #666;}
+		.scratch02 img {position: relative;width: 60px; height: 50px;}
+		.showposter {text-align: center;margin-top: 5px;padding-bottom: 10px;}
+
+		/* 列表 */
+		.classify {height: 60px;line-height: 60px;background-color: #fff;position: relative;border-bottom: 1px solid #e0e0e0;}
+		.classify .sublogo {width: 30px;margin-top: 15px;margin-left: 15px;float: left;}
+		.classify .arrow {position: absolute;vertical-align: top;right: 15px;top:20px;height: 20px;}
+		.classify .info {line-height: 20px; float: left; height: 60px;margin-left: 10px;}
+		.classify .info .title {font-size: 15px; color: #000; margin-top: 10px;}
+		.classify .info .subtitle {font-size: 12px; color: #666; margin-top: 5px;}
+		.subclass {display: none;}
+		.subclass .flipcard {margin:0;}
+		.brb {border-right: 1px solid #e0e0e0;border-bottom: 1px solid #e0e0e0;}
+		.brb {border-right: 1px solid #e0e0e0;border-bottom: 1px solid #e0e0e0;}
+		.bb {border-bottom: 1px solid #e0e0e0;}
+
+		.presshover {background-color: #FAFAFA !important;}
+		table {width: 100%;}
+	</style>
+</head>
+<body>
+
+	<!-- 2 列表 -->
+	<div class="h10"></div>
+
+<div id="mendlist">
+  <!--
+	<div class="classify"  tapmode="" onclick="expandList('food')" >
+		<img src="../../image/mend_on.png" alt="" class="sublogo">
+		<div class="info">
+			<div class="title">报修号：2219092109</div>
+			<div class="subtitle">报修设备：wwwww-wwwwwwwwwwww</div>
+		</div>
+		<img src="../../image/ic_arrow_down_black.png" alt="" class="arrow" id="foodarrow">
+	</div>
+	<div class="subclass" id="food"  data-click='0' >
+    <div class="info" style="margin:20px 20px 20px 20px;font-size:13px;" >
+      <div class="title">报修时间：</div>
+			<div class="subtitle">121212121</div>
+      <div class="title">报修问题：</div>
+			<div class="subtitle">火锅、小吃快餐</div>
+      <div class="title">处理情况：</div>
+			<div class="subtitle">已处理</div>
+		</div>
+	</div>-->
+</div>
+
+
+
+
+
+</body>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script>
+
+  var mid ="";
+  	apiready=function(){
+      mid=localStorage.getItem('log');
+			api.showProgress({
+					style: 'default',
+					animationType: 'fade',
+					title: '努力加载中...',
+					text: '先喝杯茶...',
+					modal: false
+			});
+  		api.ajax({
+  		    url: 'http://129.204.152.137:8080/project_member/MendListServlet',
+  		    method: 'post',
+  		    cache:'false',
+  		    timeout:15,
+    	    data: {
+    	        values: {
+    	          mid:mid
+    	        }
+    	    }
+  			},function(ret, err){
+					api.hideProgress();
+          var mendlist=document.getElementById('mendlist');
+          //var mendlist2=document.getElementById('mendlist2');
+  		    if (ret) {
+  		    if(ret.length>0){
+  			      for(var i=0;i<ret.length;i++){
+  							var ppmendlist='<div class="classify"  tapmode="" onclick="expandList(\'menddetail'+i+'\')" ><img src="../../image/';
+                if(parseInt(ret[i].mstate)==0){
+                  ppmendlist+='mend_off';
+                }else{
+                  ppmendlist+='mend_on';
+                }
+                ppmendlist+='.png" alt="" class="sublogo"><div class="info"><div class="title">报修号：'
+                            +ret[i].mmendid
+                            +'</div><div class="subtitle">报修设备：'
+                            +ret[i].vid
+                            +'</div></div><img src="../../image/ic_arrow_down_black.png" alt="" class="arrow" id="menddetail'+i+'arrow">'
+                            +'</div><div class="subclass" id="menddetail'+i+'"  data-click=\'0\' >'
+                            +'<div class="info" style="margin:20px 20px 20px 20px;font-size:13px;" >'
+                            +'<div class="title">报修时间：</div><div class="subtitle">'
+                            +ret[i].mtime
+                            +'</div> <div class="title">报修问题：</div><div class="subtitle">'
+                            +ret[i].problem
+                            +'</div><div class="title">处理情况：</div><div class="subtitle">';
+                            if(parseInt(ret[i].mstate)==0){
+                              ppmendlist+='未处理</div></div>';
+                            }else{
+                              ppmendlist+='已处理</div></div>';
+                            }
+                $api.append(mendlist,ppmendlist);
+              }
+            }
+  			 	else {
+            var ppmendlist1='<div class="info"><div class="title">亲，当前并没有报修记录！</div>'
+                        +'</div></div><img src="../../image/ic_arrow_down_black.png" alt="" class="arrow" id="foodarrow">';
+            $api.append(mendlist1,ppmendlist1);
+
+            var ppmendlist2='<div class="title">未有记录！</div>';
+            $api.append(mendlist2,ppmendlist2);
+  			 	}
+  			    } else {
+              var ppmendlist1='<div class="info"><div class="title">亲，当前并没有报修！</div>'
+                          +'</div></div><img src="../../image/ic_arrow_down_black.png" alt="" class="arrow" id="foodarrow">';
+              $api.append(mendlist1,ppmendlist1);
+
+              var ppmendlist2='<div class="title">未有记录！</div>';
+              $api.append(mendlist2,ppmendlist2);
+  			    }
+  			});
+  		}
+
+  		function showItemList(){
+  		  location.reload();
+  		}
+
+      	function expandList (type) {
+      		var food = document.getElementById(type);
+      		var click = food.getAttribute("data-click");
+
+      		if (click == 0) {
+      			// 点开
+      			food.setAttribute("data-click", 1);
+      			$api.dom('#'+type+'arrow').src = "../../image/ic_arrow_up_black.png";
+      			food.style.display = 'block';
+      		}else {
+      			// 关闭
+      			food.setAttribute("data-click", 0);
+      			$api.dom('#'+type+'arrow').src = "../../image/ic_arrow_down_black.png";
+      			food.style.display = 'none';
+      		}
+      	}
+
+</script>
+</html>

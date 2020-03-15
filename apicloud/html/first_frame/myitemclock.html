@@ -1,0 +1,407 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <title>Hello APP</title>
+    <link rel="stylesheet" type="text/css" href="../../css/api.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/common.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/idangerous.swiper.css">
+
+    <style>
+        html,body{min-height:100%;background-color: #eee;}
+        body {position: relative;}
+        .h10 {height: 10px;}
+        .h50 {height: 50px;}
+        /* section 1 */
+        .section01 {height: 30px;line-height: 30px;text-align: center;color: #fff;background-color: #5AB06C;}
+        .fr {float: right;}
+        .fl {float: left;}
+
+        /* 2. 价格样式 */
+        .priceitem {height: 60px; line-height: 60px;border-bottom: 1px solid #ccc;}
+        .priceitem .price, .priceitem .symbol {color: #FC5500;}
+        .priceitem .price {font-size: 20px;}
+        .priceitem .o-price {font-size: 12px; color: #666;}
+        .priceitem .buynow {background-color: #FC5500; color: #fff; height: 25px; line-height: 25px; border-radius: 3px;padding: 10px 20px;margin-top: 7px;}
+
+        /**/
+        .item {display: table; height: 70px; width: 100%;}
+        .item .itemlogo , .item .itemshelf {display: table-cell; vertical-align: middle;float: left;}
+
+        .item .itemlogo {width: 70px;}
+        .item .itemlogo img  {margin-left: 10px;width: 40px;}
+        .item .itemshelf .shelfinfo01 {font-size: 20px;color: #000;}
+
+        .item {background-color: #fff;position: relative;border-bottom: 1px solid #d3d3d3;}
+        .item .itemlogo {position: absolute; top: 10px;}
+        .itemshelf {margin-left: 15px;display: block;/* 不再显示为table-cell */}
+        .item .userlogo img {width: 40px;padding: 2px; border: 1px solid #e7e7e7;border-radius: 2px;}
+        .itemshelf .shelfinfo01 {color: #000;font-size: 16px;line-height: 18px;margin-top: 10px;}
+        .itemshelf .ordering{color: #fff;font-size: 12px;background-color: #5bb06c;padding: 2px 4px;display: inline-block;}
+        .style2 .itemshelf .shelfinfo03 {color: #999;font-size: 12px;margin-right: 10px;border-bottom: 0;padding: 3px 0 5px 0;}
+        .itemshelf .staring {color: #999;font-size: 12px;line-height: 14px;margin-top: 5px;margin-bottom: 20px;}
+        .itemshelf .staring img {height: 12px;}
+
+        .item .buybtn {display: table-cell; vertical-align: middle;}  /*抽象布局信息*/
+        .item .buybtn p {color: #fff;background-color: #3893CF;float: right;padding: 5px 10px;margin-right: 10px;}
+
+        /* */
+        .shopcover {width: 100%;}
+        .section02 .itemshelf .shelfinfo03 {color: #999; font-size: 14px; margin-right: 10px; border-bottom: 0; padding: 5px 0 5px 0;}
+        .section02 .buybtn {display: table-cell; vertical-align: middle;}  /*抽象布局信息*/
+        .section02 .buybtn p {color: #fff;background-color: #5AB06C;float: right;padding: 5px 10px;margin-right: 10px;font-size: 14px;line-height: 20px;}
+        .section02 .buybtn .weixin {height: 20px; vertical-align: top; margin-right: 5px;}
+
+        .minusorder {float: right;display: none;position: relative;}
+        .minus {color: #fff; background-color: #3893CF; float: right; padding: 5px;margin-right: 15px;}
+        .numbg {height: 20px; margin-top: 5px; vertical-align: top;float: right;margin-right: 15px;}
+        .thisordernum {position: absolute; right: 16px; top: 5px; color: #fff; width: 20px; text-align: center; height: 20px;}
+        /* 暗色标题 */
+        .darktitle {height: 30px;line-height: 30px;color: #787878;margin-left: 15px;font-size: 14px;}
+
+        /* 底部信息 */
+        .bottom {height: 50px;background-color: #2f373e;position: fixed;bottom: 0;width: 100%;}
+        .bottom img {height: 30px;margin-top: 10px;margin-left: 15px;vertical-align: top;}
+        #minbuy {float: right;color: #fff;background-color: #404850;padding: 5px 10px;margin: 11px 10px 0 0;}
+        #buyit {float: right;color: #fff;background-color: #4DC060;padding: 5px 10px;margin: 11px 10px 0 0;display: none;}
+        .bottom .buyinfo {height: 50px; line-height: 50px; color: #fff;display: none;}
+        .bottom .buyinfo span {color: #fff;}
+
+        /* 悬浮样式 */
+        .itemhover {background-color: #eee !important;}
+        .total-hover {background-color: rgba(77, 192, 96, 0.6) !important;}
+
+        .select {
+        		display: inline-block;
+        		width: 80px;
+        		position: relative;
+        		vertical-align: middle;
+        		padding: 0;
+        		overflow: hidden;
+        		background-color: #fff;
+        		color: #555;
+        		border: 1px solid #aaa;
+        		text-shadow: none;
+        		border-radius: 4px;
+        		transition: box-shadow 0.25s ease;
+        		z-index: 2;
+        	}
+
+        	.select:hover {
+        		box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+        	}
+
+        	.select:before {
+        		content: "";
+        		position: absolute;
+        		width: 0;
+        		height: 0;
+        		border: 10px solid transparent;
+        		border-top-color: #ccc;
+        		top: 14px;
+        		right: 10px;
+        		cursor: pointer;
+        		z-index: -2;
+        	}
+        	.select select {
+        		cursor: pointer;
+        		padding: 10px;
+        		width: 100%;
+        		border: none;
+        		background: transparent;
+        		background-image: none;
+        		-webkit-appearance: none;
+        		-moz-appearance: none;
+        	}
+
+        	.select select:focus {
+        		outline: none;
+        	}
+
+    </style>
+</head>
+<body>
+
+  <div class="darktitle">设置定时信息</div>
+  <div class="item style2">
+      <div class="itemshelf">
+          <div class="shelfinfo01">开始时间</div>
+      </div>
+      <div class="buybtn">
+        <div class="select">
+          <select name="cars" id="starttime1">
+            <option value="00"  selected>00</option>
+            <option value="01">01</option>
+            <option value="02">02</option>
+            <option value="03">03</option>
+            <option value="04">04</option>
+            <option value="05">05</option>
+            <option value="06">06</option>
+            <option value="07">07</option>
+            <option value="08">08</option>
+            <option value="09">09</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+            <option value="14">14</option>
+            <option value="15">15</option>
+            <option value="16">16</option>
+            <option value="17">17</option>
+            <option value="18">18</option>
+            <option value="19">19</option>
+            <option value="20">20</option>
+            <option value="21">21</option>
+            <option value="22">22</option>
+            <option value="23">23</option>
+          </select>
+        </div>&nbsp;&nbsp;<b>:</b>&nbsp;
+        <div class="select">
+          <select name="cars" id="starttime2">
+            <option value="00"  selected>00</option>
+            <option value="01">01</option>
+            <option value="02">02</option>
+            <option value="03">03</option>
+            <option value="04">04</option>
+            <option value="05">05</option>
+            <option value="06">06</option>
+            <option value="07">07</option>
+            <option value="08">08</option>
+            <option value="09">09</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+            <option value="14">14</option>
+            <option value="15">15</option>
+            <option value="16">16</option>
+            <option value="17">17</option>
+            <option value="18">18</option>
+            <option value="19">19</option>
+            <option value="20">20</option>
+            <option value="21">21</option>
+            <option value="22">22</option>
+            <option value="23">23</option>
+            <option value="24">24</option>
+            <option value="25">25</option>
+            <option value="26">26</option>
+            <option value="27">27</option>
+            <option value="28">28</option>
+            <option value="29">29</option>
+            <option value="30">30</option>
+            <option value="31">31</option>
+            <option value="32">32</option>
+            <option value="33">33</option>
+            <option value="34">34</option>
+            <option value="35">35</option>
+            <option value="36">36</option>
+            <option value="37">37</option>
+            <option value="38">38</option>
+            <option value="39">39</option>
+            <option value="40">40</option>
+            <option value="41">41</option>
+            <option value="42">42</option>
+            <option value="43">43</option>
+            <option value="44">44</option>
+            <option value="45">45</option>
+            <option value="46">46</option>
+            <option value="47">47</option>
+            <option value="48">48</option>
+            <option value="49">49</option>
+            <option value="50">50</option>
+            <option value="51">51</option>
+            <option value="52">52</option>
+            <option value="53">53</option>
+            <option value="54">54</option>
+            <option value="55">55</option>
+            <option value="56">56</option>
+            <option value="57">57</option>
+            <option value="58">58</option>
+            <option value="59">59</option>
+          </select>
+        </div>
+      </div>
+  </div>
+  <div class="item style2">
+      <div class="itemshelf">
+          <div class="shelfinfo01">结束时间</div>
+      </div>
+      <div class="buybtn">
+        <div class="select">
+          <select name="cars" id="endtime1">
+            <option value="00"  selected>00</option>
+            <option value="01">01</option>
+            <option value="02">02</option>
+            <option value="03">03</option>
+            <option value="04">04</option>
+            <option value="05">05</option>
+            <option value="06">06</option>
+            <option value="07">07</option>
+            <option value="08">08</option>
+            <option value="09">09</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+            <option value="14">14</option>
+            <option value="15">15</option>
+            <option value="16">16</option>
+            <option value="17">17</option>
+            <option value="18">18</option>
+            <option value="19">19</option>
+            <option value="20">20</option>
+            <option value="21">21</option>
+            <option value="22">22</option>
+            <option value="23">23</option>
+          </select>
+        </div>&nbsp;&nbsp;<b>:</b>&nbsp;
+        <div class="select" >
+          <select name="cars" id="endtime2">
+            <option value="00"  selected>00</option>
+            <option value="01">01</option>
+            <option value="02">02</option>
+            <option value="03">03</option>
+            <option value="04">04</option>
+            <option value="05">05</option>
+            <option value="06">06</option>
+            <option value="07">07</option>
+            <option value="08">08</option>
+            <option value="09">09</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+            <option value="14">14</option>
+            <option value="15">15</option>
+            <option value="16">16</option>
+            <option value="17">17</option>
+            <option value="18">18</option>
+            <option value="19">19</option>
+            <option value="20">20</option>
+            <option value="21">21</option>
+            <option value="22">22</option>
+            <option value="23">23</option>
+            <option value="24">24</option>
+            <option value="25">25</option>
+            <option value="26">26</option>
+            <option value="27">27</option>
+            <option value="28">28</option>
+            <option value="29">29</option>
+            <option value="30">30</option>
+            <option value="31">31</option>
+            <option value="32">32</option>
+            <option value="33">33</option>
+            <option value="34">34</option>
+            <option value="35">35</option>
+            <option value="36">36</option>
+            <option value="37">37</option>
+            <option value="38">38</option>
+            <option value="39">39</option>
+            <option value="40">40</option>
+            <option value="41">41</option>
+            <option value="42">42</option>
+            <option value="43">43</option>
+            <option value="44">44</option>
+            <option value="45">45</option>
+            <option value="46">46</option>
+            <option value="47">47</option>
+            <option value="48">48</option>
+            <option value="49">49</option>
+            <option value="50">50</option>
+            <option value="51">51</option>
+            <option value="52">52</option>
+            <option value="53">53</option>
+            <option value="54">54</option>
+            <option value="55">55</option>
+            <option value="56">56</option>
+            <option value="57">57</option>
+            <option value="58">58</option>
+            <option value="59">59</option>
+          </select>
+        </div>
+      </div>
+  </div>
+
+  <div class="priceitem hightitem inwrap" style="display：flex;">
+  <div class="buynow fr" tapmode="buyhover" onclick="submitClock()">提交定时</div>
+  </div>
+
+    <div class="h50"></div>
+
+</body>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript">
+var ino="";
+
+apiready=function(){
+  ino = api.pageParam.ttino;
+}
+
+
+function submitClock(){
+  var starttime1=parseInt(document.getElementById('starttime1').value);
+  var starttime2=parseInt(document.getElementById('starttime2').value);
+  var endtime1=parseInt(document.getElementById('endtime1').value);
+  var endtime2=parseInt(document.getElementById('endtime2').value);
+
+  if((starttime1<endtime1)||((starttime1==endtime1)&&(starttime2<endtime2))){
+    api.showProgress({
+        style: 'default',
+        animationType: 'fade',
+        title: '努力加载中...',
+        text: '先喝杯茶...',
+        modal: false
+    });
+    api.ajax({
+        url: 'http://129.204.152.137:8080/project_member/ItemClockAddServlet',
+        method: 'post',
+        cache:'false',
+        timeout:15,
+        dataType:'text',
+        data: {
+            values: {
+              ino :ino,
+              starttime1:starttime1,
+              starttime2:starttime2,
+              endtime1:endtime1,
+              endtime2:endtime2
+            }
+        }
+    },
+    function(ret, err){
+      api.hideProgress();
+        if(ret=='ok'){
+              alert('操作成功');
+              api.execScript({
+                  name: 'root',
+                  frameName: 'first_frame',
+                  script: 'showItemList();'
+              });
+              api.execScript({
+                  name: 'myitemoperate',
+                  frameName: 'myitemoperate_body',
+                  script: 'itemrefresh();'
+              });
+              api.closeWin();
+              /*
+              api.closeToWin({
+                name: 'root'
+              });
+              */
+        }else{
+          alert('操作失败' );
+          api.execScript({
+              name: 'root',
+              frameName: 'first_frame',
+              script: 'showItemList();'
+          });
+        }
+    });
+  }else{
+    alert('开始时间不得晚于结束时间！' );
+  }
+
+}
+</script>
+</html>

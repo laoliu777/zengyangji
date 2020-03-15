@@ -1,0 +1,98 @@
+
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"content="initial-scale=1, maximum-scale= 1, minimum-scale=1, user-scalable=no">
+      <link rel="stylesheet" type="text/css" href="aui.css" />
+      <link rel="stylesheet" type="text/css" href="../../css/api.css" />
+      <link rel="stylesheet" type="text/css" href="../../css/common.css" />
+  <title>my</title>
+<style>
+html,body{
+     margin: 0px;
+      padding: 0px;
+      border: 0px;
+      height: 100%;}
+
+      body{background-color: #F5F5F5;display: flex;flex-direction: column;}
+
+      .body-a{flex:0 0 10%;display: flex;border-bottom: 1px solid #cccccc;}
+      .fanhui{flex:0 0 10%;
+        background-image: url(../../image/suoyou/fanhui1.png);
+              background-repeat: no-repeat;
+              background-size:25px;
+              background-position:left; }
+       .body-a-2{flex:0 0 70%;text-align: center;display: flex;align-items: center;justify-content: center;color: blank;font-size: 1.em;}
+
+
+       .button1{width:100%;height: 100%;border:none;border-radius:5px;color:red;font-size:1.0em;color:#cccccc;font-size:1.1em;}
+       .button2{width:100%;height: 100%;background-color:#FF9913;border:none;border-radius:5px;color:white;font-size:1.0em;font-size:1.1em;}
+       .body-b{flex:0 0 82%;}
+       .body-c{flex:0 0 8%; display: flex;flex-direction: row;}
+             .body-c1{flex:0 0 50%; }
+             .body-c2{flex:0 0 50%;}
+             .juzhong{text-align: center; align-items: center;justify-content: center;}
+</style>
+</head>
+
+
+<body>
+ <div class="body-a">
+   <div style="flex: 0 0 5%"></div>
+   <div class="fanhui" onclick="api.closeWin();"></div>
+   <div class="body-a-2"><b>用户注册协议与隐私政策</b> </div>
+ </div>
+
+
+ <div class="body-b"> </div>
+
+
+ <div class="body-c" style="display:flex;">
+   <div class="body-c1"> <button type="button" name="button" class="button1 body-c1" style="" onclick="closezhuce();"><b>不同意</b></button> </div>
+   <div class="body-c2"> <button type="button" name="button2" class="button2 body-c1" style=""  onclick="openzhuce1();"><b>同意</b></button> </div>
+ </div>
+</body>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript">
+
+  apiready=function(){
+    var yy=api.winHeight/10;
+    var yh=api.winHeight-2*yy;
+    api.openFrame({
+        name: 'yinsitiaoyue',
+        url: 'yinsitiaoyue.html',
+        rect: {
+            x: 0,
+            y: yy,
+            w: api.winWidth,
+            h: yh
+        },
+        bounces: false,
+
+        vScrollBarEnabled: true,
+        hScrollBarEnabled: true
+});
+
+
+  }
+
+
+  function closezhuce(){
+  api.closeWin();
+  }
+
+  function openzhuce1(){
+    api.closeFrame({
+        name: 'yinsitiaoyue'
+    });
+
+    api.openWin({
+        name: 'zhuce1',
+        url: 'zhuce2.html'
+    });
+
+  }
+</script>
+</html>
